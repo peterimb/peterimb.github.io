@@ -68,10 +68,18 @@
   }
   header .links a:hover { border-color: var(--accent); color: var(--accent); }
 
+  .nav-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
   nav {
     max-width: 720px;
     margin: 0 auto;
-    padding: 0 24px 12px;
+    padding: 16px 24px 12px;
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
@@ -86,8 +94,8 @@
   nav a:hover { color: var(--accent); }
   nav.subnav {
     border-bottom: 1px solid var(--border);
-    padding-top: 16px;
-    padding-bottom: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     gap: 8px 20px;
   }
   nav.subnav a {
@@ -227,6 +235,7 @@
   </div>
 </header>
 
+<div class="nav-wrap">
 <nav>
   <a href="#journalism">Journalism &amp; Features</a>
   <a href="#content-marketing">Content Marketing</a>
@@ -241,6 +250,7 @@
   <a href="#edms">Email Marketing</a>
   <a href="#product-guides">Product Guides</a>
 </nav>
+</div>
 
 <main>
 
