@@ -108,13 +108,24 @@
 
   /* Name bar */
   .name-bar {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 12;
     background: color-mix(in srgb, var(--bg) 94%, transparent);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .name-bar.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
   .name-bar-inner {
     max-width: 760px;
@@ -541,6 +552,29 @@
   searchInput.addEventListener('input', applyFilters);
 
   applyFilters();
+})();
+
+(function () {
+  var nameBar = document.querySelector('.name-bar');
+  var headerEl = document.getElementById('top');
+  if (!nameBar || !headerEl) return;
+
+  var ticking = false;
+
+  function update() {
+    var headerBottom = headerEl.getBoundingClientRect().bottom;
+    nameBar.classList.toggle('visible', headerBottom < 0);
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  update();
 })();
 </script>
 
