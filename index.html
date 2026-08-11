@@ -197,7 +197,7 @@
     color: var(--accent);
     background: var(--accent-wash);
     border: 2px solid var(--accent);
-    border-radius: 999px;
+    border-radius: 6px;
     padding: 8px 18px;
     cursor: pointer;
     transition: transform 0.12s ease, color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
@@ -209,9 +209,9 @@
     box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 60%, black);
   }
   .chip.active {
-    background: var(--fg);
-    border-color: var(--fg);
-    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
     box-shadow: none;
     transform: none;
   }
@@ -255,6 +255,16 @@
     border-bottom: 1px solid var(--border);
   }
   ul.archive li:last-child { border-bottom: none; }
+  ul.archive li.type-divider {
+    border-bottom: none;
+    padding: 30px 0 8px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  ul.archive li.type-divider:first-child { padding-top: 0; }
   ul.archive a {
     display: flex;
     align-items: center;
@@ -306,6 +316,10 @@
     letter-spacing: 0.05em;
     font-size: 0.68rem;
     font-weight: 700;
+  }
+  ul.archive.type-filtered .row-sep,
+  ul.archive.type-filtered .row-type {
+    display: none;
   }
   @media (max-width: 560px) {
     .row-title {
@@ -412,6 +426,7 @@
 
   <ul class="archive" id="archive-list">
 
+    <li class="type-divider" data-type="journalism">Journalism</li>
     <li data-type="journalism" data-client="WIRED UK"><a href="https://www.wired.com/story/dengue-vaccine-philippines-outbreak/" target="_blank" rel="noopener"><span class="row-title">What happens when vaccine scepticism takes over? Look to the Philippines</span><span class="row-meta"><span class="row-client">WIRED UK</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
     <li data-type="journalism" data-client="Publish.org"><a href="https://drive.google.com/file/d/1BHgRBgrprviN_WBDEKQWFB4JzXRlac8W/view" target="_blank" rel="noopener"><span class="row-title">Ocean's 2018: Is Europe's Cybersecurity Keeping up with the Rise of Financial Cybercrime?</span><span class="row-meta"><span class="row-client">Publish.org</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
     <li data-type="journalism" data-client="Nikkei Asia"><a href="https://web.archive.org/web/20180716170044/https://asia.nikkei.com/economy/philippines-tries-to-reignite-production" target="_blank" rel="noopener"><span class="row-title">Philippines tries to reignite production</span><span class="row-meta"><span class="row-client">Nikkei Asia</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
@@ -427,6 +442,7 @@
     <li data-type="journalism" data-client="Rappler"><a href="https://drive.google.com/open?id=1ytp9vBNujYqW1ZvhrvgPZOKZpCD05uQi&amp;usp=drive_fs" target="_blank" rel="noopener"><span class="row-title">A coffee journey: From the farm to your cup</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
     <li data-type="journalism" data-client="Rappler"><a href="https://drive.google.com/open?id=1SUUe95KscC5ixuDgBtGj9cbXnmaD4RxA&amp;usp=drive_fs" target="_blank" rel="noopener"><span class="row-title">Dr Michio Kaku: Philippines poised to leap into the future</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
 
+    <li class="type-divider" data-type="blogs">Blogs &amp; Thought Leadership</li>
     <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/reasons-why-having-a-fast-broadband-connection-is-essential/" target="_blank" rel="noopener"><span class="row-title">Reasons Why Having A Fast Broadband Connection Is Essential</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
     <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/home-cybersecurity-how-to-protect-your-family-from-cyber-threats/" target="_blank" rel="noopener"><span class="row-title">Home Cybersecurity: How To Protect Your Family From Cyber Threats</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
     <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/wifi-6-explained-speed-benefits-and-why-its-time-to-upgrade/" target="_blank" rel="noopener"><span class="row-title">WiFi 6 Explained: Speed, Benefits, and Why It's Time to Upgrade</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
@@ -457,12 +473,14 @@
     <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/blockchain-biz/recommendation-media-is-here-but-is-it-what-we-need-a5564609e03c" target="_blank" rel="noopener"><span class="row-title">What's next after social media's failure to its users?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
     <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/@t2.world/whats-next-in-media-after-the-clickbait-era-e841d89fea73" target="_blank" rel="noopener"><span class="row-title">What's next in media after the clickbait era?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
 
+    <li class="type-divider" data-type="press-releases">Press Releases</li>
     <li data-type="press-releases" data-client="Xiaomi"><a href="https://www.mi.com/global/discover/article?id=3768" target="_blank" rel="noopener"><span class="row-title">Xiaomi SU7 Ultra Unveiled: The Ultimate Performance Technology Sedan</span><span class="row-meta"><span class="row-client">Xiaomi</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
     <li data-type="press-releases" data-client="Xiaomi"><a href="https://www.mi.com/global/discover/article?id=5467" target="_blank" rel="noopener"><span class="row-title">Xiaomi Unveils Next-Gen AIoT Lineup Spanning Smart Home, Wearables, and Entertainment</span><span class="row-meta"><span class="row-client">Xiaomi</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
     <li data-type="press-releases" data-client="Xiaomi"><a href="https://www.mi.com/global/discover/article?id=5463" target="_blank" rel="noopener"><span class="row-title">Xiaomi Unveils Xiaomi 15T Series Blending Outstanding Optics with Cutting-edge Technology and Flagship Design</span><span class="row-meta"><span class="row-client">Xiaomi</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
     <li data-type="press-releases" data-client="Eleven International"><a href="https://drive.google.com/file/d/1dWmODepNAEi4nkb0b6vhMAMAzuvqrpxv/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">LOST MARY unveils strategic business plans as it enters Malaysia, pledging regulatory compliance</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
     <li data-type="press-releases" data-client="Eleven International"><a href="https://drive.google.com/file/d/1QUD5thT-xIKEeTQugb57mCzRQ__xZAeT/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">Video-to-Music Composition Tool 'TemPolor' Launches to Challenge Sora AI and Suno</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
 
+    <li class="type-divider" data-type="case-studies">Case Studies</li>
     <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/unipass" target="_blank" rel="noopener"><span class="row-title">UniPass: A self-custodial Web3 wallet app developed by Account Labs</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
     <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/betteralt" target="_blank" rel="noopener"><span class="row-title">BetterAlt: A Mumbai-based wellness company combining traditional Ayurvedic wisdom with modern science</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
     <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/lightspeed-studios" target="_blank" rel="noopener"><span class="row-title">LightSpeed Studios: One of the world's leading global game developers</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
@@ -470,20 +488,24 @@
     <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/brilliant-labs" target="_blank" rel="noopener"><span class="row-title">Brilliant Labs: Wearable tech company redefining how humans interact with technology through AI-powered glasses</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
     <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/red-door-digital" target="_blank" rel="noopener"><span class="row-title">Red Door Digital: Gaming studio creating AAA-quality Web3 video games</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
 
+    <li class="type-divider" data-type="product-copy">Product Copy &amp; Articles</li>
     <li data-type="product-copy" data-client="BetterAlt"><a href="https://www.womansworld.com/contributors/cut-through-the-wellness-clutter-with-this-ancient-remedy-for-ultimate-health" target="_blank" rel="noopener"><span class="row-title">Cut Through the Wellness Clutter With This Ancient Remedy for Ultimate Health</span><span class="row-meta"><span class="row-client">BetterAlt</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
     <li data-type="product-copy" data-client="BetterAlt"><a href="https://radaronline.com/p/the-future-of-anti-aging-means-going-back-to-an-ancient-remedy/" target="_blank" rel="noopener"><span class="row-title">The Future of Anti-aging Means Going Back to an Ancient Remedy</span><span class="row-meta"><span class="row-client">BetterAlt</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
     <li data-type="product-copy" data-client="Yeedi"><a href="https://okmagazine.com/p/robot-vacuum-must-have-addition-modern-homes/" target="_blank" rel="noopener"><span class="row-title">A Smarter Way to Clean: Why a Robot Vacuum Is a Must-Have Addition to Modern Homes</span><span class="row-meta"><span class="row-client">Yeedi</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
     <li data-type="product-copy" data-client="Bc Babycare"><a href="https://www.thebraggingmommy.com/why-the-right-baby-carrier-can-make-postpartum-life-easier/" target="_blank" rel="noopener"><span class="row-title">Why the Right Baby Carrier Can Make Postpartum Life Easier</span><span class="row-meta"><span class="row-client">Bc Babycare</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
     <li data-type="product-copy" data-client="Bc Babycare"><a href="https://goodmenproject.com/parenting/how-public-babywearing-challenges-old-notions-of-manhood/" target="_blank" rel="noopener"><span class="row-title">How Public Babywearing Challenges Old Notions of Manhood</span><span class="row-meta"><span class="row-client">Bc Babycare</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
 
+    <li class="type-divider" data-type="landing-pages">Landing Pages &amp; UX Copy</li>
     <li data-type="landing-pages" data-client="ViewQwest"><a href="https://drive.google.com/file/d/1MBX_U4okFMRi_OJWoRGz1L5UQBJd1FCq/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">ViewQwest Residential Broadband</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Landing Page</span></span></a></li>
     <li data-type="landing-pages" data-client="Bondee"><a href="https://bondee.com/safety/safetyCenter" target="_blank" rel="noopener"><span class="row-title">Bondee Safety Hub</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Landing Page</span></span></a></li>
 
+    <li class="type-divider" data-type="reports">Infographics &amp; Reports</li>
     <li data-type="reports" data-client="Singtel"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/solution-brief-from-telco-to-techco.pdf" target="_blank" rel="noopener"><span class="row-title">From telco to techco: Enabling the future of digital transformation<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
     <li data-type="reports" data-client="Singtel"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/streamline-hybrid-hr-process-with-ease.pdf" target="_blank" rel="noopener"><span class="row-title">From Onboarding to Team Engagement: Streamline Hybrid HR Processes With Ease<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
     <li data-type="reports" data-client="Singtel"><a href="https://cdn2.singteldigital.com/content/dam/singtel/business/sb/articles/strategies-to-upskills-diverse-workforce.pdf" target="_blank" rel="noopener"><span class="row-title">Tech-driven inclusivity: strategies to upskill a diverse workforce<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
     <li data-type="reports" data-client="Singtel"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/infographic-next-gen-security-for-the-remote-workforce.pdf" target="_blank" rel="noopener"><span class="row-title">Next-gen security for the remote workplace<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
 
+    <li class="type-divider" data-type="edms">Email Marketing</li>
     <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-welcome-summer-stock.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-welcome-summer-stock.png" alt="TradeSquare welcome EDM" loading="lazy"><span class="row-title">Welcome to the Best Place to Buy Your Summer Stock</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
     <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-sizzling-summer-steals.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-sizzling-summer-steals.png" alt="TradeSquare Sizzling Summer Steals EDM" loading="lazy"><span class="row-title">Sizzling Summer Steals: Buy Australian Wholesale</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
     <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-november-update.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-november-update.png" alt="TradeSquare November Update EDM" loading="lazy"><span class="row-title">November TradeSquare Update</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
@@ -491,6 +513,7 @@
     <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-platform-guide.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-platform-guide.png" alt="Discover Australian Wholesale platform guide EDM" loading="lazy"><span class="row-title">Discover Australian Wholesale: Platform Guide</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
     <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-advent-calendar.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-advent-calendar.png" alt="TradeSquare Advent Calendar EDM" loading="lazy"><span class="row-title">'Tis the Season: TradeSquare Advent Calendar</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
 
+    <li class="type-divider" data-type="product-guides">Product Guides</li>
     <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/connected-kitchen.pdf" target="_blank" rel="noopener"><span class="row-title">Connected Kitchen<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
     <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/get-to-know-your-oven.pdf" target="_blank" rel="noopener"><span class="row-title">Get to Know Your Oven<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
     <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/get-to-know-your-hob-and-hood.pdf" target="_blank" rel="noopener"><span class="row-title">Get to Know Your Hob &amp; Hood<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
@@ -518,7 +541,9 @@
 
 <script>
 (function () {
-  var rows = Array.prototype.slice.call(document.querySelectorAll('#archive-list li'));
+  var archiveList = document.getElementById('archive-list');
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#archive-list li:not(.type-divider)'));
+  var dividers = Array.prototype.slice.call(document.querySelectorAll('#archive-list li.type-divider'));
   var typeChips = Array.prototype.slice.call(document.querySelectorAll('#type-chips .chip'));
   var clientSelect = document.getElementById('client-filter');
   var searchInput = document.getElementById('search-input');
@@ -530,15 +555,25 @@
     var clientVal = clientSelect.value;
     var searchVal = searchInput.value.trim().toLowerCase();
     var visible = 0;
+    var visibleTypes = {};
 
     rows.forEach(function (row) {
-      var matchesType = activeType === 'all' || row.getAttribute('data-type') === activeType;
+      var rowType = row.getAttribute('data-type');
+      var matchesType = activeType === 'all' || rowType === activeType;
       var matchesClient = clientVal === 'all' || row.getAttribute('data-client') === clientVal;
       var title = row.querySelector('.row-title').textContent.toLowerCase();
       var matchesSearch = searchVal === '' || title.indexOf(searchVal) !== -1;
       var show = matchesType && matchesClient && matchesSearch;
       row.hidden = !show;
-      if (show) visible++;
+      if (show) {
+        visible++;
+        visibleTypes[rowType] = true;
+      }
+    });
+
+    archiveList.classList.toggle('type-filtered', activeType !== 'all');
+    dividers.forEach(function (divider) {
+      divider.hidden = activeType !== 'all' || !visibleTypes[divider.getAttribute('data-type')];
     });
 
     countEl.textContent = visible + ' of ' + rows.length + ' pieces';
