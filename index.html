@@ -85,6 +85,15 @@
     padding: 6px 14px;
   }
   nav a:hover { color: var(--accent); border-color: var(--accent); }
+  nav.subnav {
+    padding-top: 0;
+    padding-bottom: 40px;
+  }
+  nav.subnav a {
+    font-size: 0.74rem;
+    padding: 5px 12px;
+    opacity: 0.8;
+  }
 
   main {
     max-width: 780px;
@@ -96,25 +105,49 @@
     scroll-margin-top: 24px;
   }
   section h2 {
-    font-size: 1.15rem;
+    font-size: 1.4rem;
     margin: 0 0 4px;
     letter-spacing: -0.01em;
   }
   section .section-desc {
     color: var(--muted);
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     margin: 0 0 20px;
+    max-width: 62ch;
+  }
+  .pillar-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0 0 32px;
+    max-width: 62ch;
+  }
+  .subsection {
+    margin-bottom: 44px;
+    scroll-margin-top: 24px;
+    padding-left: 20px;
+    border-left: 2px solid var(--border);
+  }
+  .subsection h3.subsection-title {
+    font-size: 1.05rem;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
   }
   .group {
     margin-bottom: 20px;
   }
-  .group h3 {
+  .group h3, .group h4 {
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
-    margin: 0 0 10px;
+    margin: 0 0 4px;
     font-weight: 600;
+  }
+  .group .client-desc {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin: 0 0 10px;
+    max-width: 62ch;
   }
   .gallery {
     display: grid;
@@ -191,13 +224,16 @@
   <p class="role">Content Strategist · Editor · Copywriter</p>
   <p class="bio">A collection of journalism, brand storytelling, and copywriting written for newsrooms, agencies, and companies across tech, wellness, telecom, and lifestyle.</p>
   <div class="links">
-    <a href="mailto:peterimbong@gmail.com">peterimbong@gmail.com</a>
+    <a href="mailto:peter@peterimbong.com">peter@peterimbong.com</a>
     <a href="https://linkedin.com/in/peterimbong" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </header>
 
 <nav>
   <a href="#journalism">Journalism &amp; Features</a>
+  <a href="#content-marketing">Content Marketing</a>
+</nav>
+<nav class="subnav">
   <a href="#blogs">Blogs &amp; Thought Leadership</a>
   <a href="#press-releases">Press Releases</a>
   <a href="#case-studies">Case Studies</a>
@@ -247,12 +283,17 @@
     </div>
   </section>
 
-  <section id="blogs">
-    <h2>Blogs &amp; Thought Leadership</h2>
+  <section id="content-marketing">
+    <h2>Content Marketing</h2>
+    <p class="pillar-desc">Brand and agency work written on behalf of companies rather than under my own byline — organized by content type, then by client.</p>
+
+  <div class="subsection" id="blogs">
+    <h3 class="subsection-title">Blogs &amp; Thought Leadership</h3>
     <p class="section-desc">Brand voice and thought leadership content written for company blogs.</p>
 
     <div class="group">
-      <h3>ViewQwest</h3>
+      <h4>ViewQwest</h4>
+      <p class="client-desc">An award-winning Singapore-based internet service provider (ISP) and managed security services provider (MSSP), established in 2001.</p>
       <ul class="pieces">
         <li><a href="https://viewqwest.com/sg/residential/blog/reasons-why-having-a-fast-broadband-connection-is-essential/" target="_blank" rel="noopener"><span class="title">Reasons Why Having A Fast Broadband Connection Is Essential</span></a></li>
         <li><a href="https://viewqwest.com/sg/residential/blog/home-cybersecurity-how-to-protect-your-family-from-cyber-threats/" target="_blank" rel="noopener"><span class="title">Home Cybersecurity: How To Protect Your Family From Cyber Threats</span></a></li>
@@ -267,7 +308,8 @@
     </div>
 
     <div class="group">
-      <h3>Bondee</h3>
+      <h4>Bondee</h4>
+      <p class="client-desc">A virtual, avatar-based social networking app from Singapore-based Metadream. Launched in January 2023, it functions as a digital "plaza" where users create 3D avatars to chat, decorate personal rooms, and share daily statuses with friends.</p>
       <ul class="pieces">
         <li><a href="https://bondee.com/newsInfo/16" target="_blank" rel="noopener"><span class="title">How Our Trust &amp; Safety Advisory Board is Navigating the Future on Bondee</span></a></li>
         <li><a href="https://bondee.com/newsInfo/15" target="_blank" rel="noopener"><span class="title">From Avatars to Advocates: How 2 Bondee Users Turned Their Online Connection into a Real-World Mission for Disability Inclusion</span></a></li>
@@ -278,7 +320,8 @@
     </div>
 
     <div class="group">
-      <h3>Eleven International</h3>
+      <h4>Eleven International</h4>
+      <p class="client-desc">Established in 2017, an award-winning cross-border communications agency for consumer tech, Web3, and B2B tech brands.</p>
       <ul class="pieces">
         <li><a href="https://www.11.international/post/advice-on-social-media-strategy" target="_blank" rel="noopener"><span class="title">Insights on Social Media Strategy</span></a></li>
         <li><a href="https://www.11.international/post/welcome-to-our-new-look-eleven-international-your-trusted-advisor-for-cross-border-communications" target="_blank" rel="noopener"><span class="title">Welcome to Our New Look: Eleven International — Your Trusted Advisor for Cross-Border Communications</span></a></li>
@@ -287,7 +330,8 @@
     </div>
 
     <div class="group">
-      <h3>t2 World</h3>
+      <h4>t2 World</h4>
+      <p class="client-desc">A decentralized, Web3-based social network for writers and readers, aiming to cultivate meaningful, niche conversations and "social writing."</p>
       <ul class="pieces">
         <li><a href="https://medium.com/@t2.world/how-the-attention-economy-of-web-2-0-failed-us-and-the-promise-web-3-0-holds-f0fda221b87a" target="_blank" rel="noopener"><span class="title">How the 'Attention Economy' of Web 2.0 failed us, and the promise Web 3.0 holds</span></a></li>
         <li><a href="https://medium.com/@t2.world/the-age-of-outrage-how-reaction-culture-is-damaging-discourse-8f534f87d0cd" target="_blank" rel="noopener"><span class="title">The Age of Outrage: How Reaction Culture is Damaging Discourse</span></a></li>
@@ -300,14 +344,15 @@
         <li><a href="https://medium.com/@t2.world/whats-next-in-media-after-the-clickbait-era-e841d89fea73" target="_blank" rel="noopener"><span class="title">What's next in media after the clickbait era?</span></a></li>
       </ul>
     </div>
-  </section>
+  </div>
 
-  <section id="press-releases">
-    <h2>Press Releases</h2>
+  <div class="subsection" id="press-releases">
+    <h3 class="subsection-title">Press Releases</h3>
     <p class="section-desc">Product and corporate announcements written for global consumer tech brands.</p>
 
     <div class="group">
-      <h3>Xiaomi</h3>
+      <h4>Xiaomi</h4>
+      <p class="client-desc">A major Chinese electronics company founded in 2010, specializing in smartphones, smart home devices, and IoT products, and among the world's top three smartphone manufacturers.</p>
       <ul class="pieces">
         <li><a href="https://www.mi.com/global/discover/article?id=3768" target="_blank" rel="noopener"><span class="title">Xiaomi SU7 Ultra Unveiled: The Ultimate Performance Technology Sedan</span></a></li>
         <li><a href="https://www.mi.com/global/discover/article?id=5467" target="_blank" rel="noopener"><span class="title">Xiaomi Unveils Next-Gen AIoT Lineup Spanning Smart Home, Wearables, and Entertainment</span></a></li>
@@ -316,16 +361,17 @@
     </div>
 
     <div class="group">
-      <h3>Eleven International</h3>
+      <h4>Eleven International</h4>
+      <p class="client-desc">Cross-border communications agency for consumer tech, Web3, and B2B tech brands (see description above).</p>
       <ul class="pieces">
         <li><a href="https://drive.google.com/file/d/1dWmODepNAEi4nkb0b6vhMAMAzuvqrpxv/view?usp=sharing" target="_blank" rel="noopener"><span class="title">LOST MARY unveils strategic business plans as it enters Malaysia, pledging regulatory compliance</span></a></li>
         <li><a href="https://drive.google.com/file/d/1QUD5thT-xIKEeTQugb57mCzRQ__xZAeT/view?usp=sharing" target="_blank" rel="noopener"><span class="title">Video-to-Music Composition Tool 'TemPolor' Launches to Challenge Sora AI and Suno</span></a></li>
       </ul>
     </div>
-  </section>
+  </div>
 
-  <section id="case-studies">
-    <h2>Case Studies</h2>
+  <div class="subsection" id="case-studies">
+    <h3 class="subsection-title">Case Studies</h3>
     <p class="section-desc">Client case studies written for Eleven International, an award-winning cross-border communications agency for consumer tech, Web3, and B2B tech brands.</p>
     <ul class="pieces">
       <li><a href="https://www.11.international/study-case/unipass" target="_blank" rel="noopener"><span class="title">UniPass: A self-custodial Web3 wallet app developed by Account Labs</span></a></li>
@@ -335,31 +381,50 @@
       <li><a href="https://www.11.international/study-case/brilliant-labs" target="_blank" rel="noopener"><span class="title">Brilliant Labs: Wearable tech company redefining how humans interact with technology through AI-powered glasses</span></a></li>
       <li><a href="https://www.11.international/study-case/red-door-digital" target="_blank" rel="noopener"><span class="title">Red Door Digital: Gaming studio creating AAA-quality Web3 video games</span></a></li>
     </ul>
-  </section>
+  </div>
 
-  <section id="product-copy">
-    <h2>Product Copy &amp; Articles</h2>
+  <div class="subsection" id="product-copy">
+    <h3 class="subsection-title">Product Copy &amp; Articles</h3>
     <p class="section-desc">Consumer-facing articles and contributed pieces written for and about product brands.</p>
-    <ul class="pieces">
-      <li><a href="https://www.womansworld.com/contributors/cut-through-the-wellness-clutter-with-this-ancient-remedy-for-ultimate-health" target="_blank" rel="noopener"><span class="title">Cut Through the Wellness Clutter With This Ancient Remedy for Ultimate Health</span><span class="outlet">Woman's World · BetterAlt</span></a></li>
-      <li><a href="https://radaronline.com/p/the-future-of-anti-aging-means-going-back-to-an-ancient-remedy/" target="_blank" rel="noopener"><span class="title">The Future of Anti-aging Means Going Back to an Ancient Remedy</span><span class="outlet">Radar Online · BetterAlt</span></a></li>
-      <li><a href="https://okmagazine.com/p/robot-vacuum-must-have-addition-modern-homes/" target="_blank" rel="noopener"><span class="title">A Smarter Way to Clean: Why a Robot Vacuum Is a Must-Have Addition to Modern Homes</span><span class="outlet">OK! Magazine · Yeedi</span></a></li>
-      <li><a href="https://www.thebraggingmommy.com/why-the-right-baby-carrier-can-make-postpartum-life-easier/" target="_blank" rel="noopener"><span class="title">Why the Right Baby Carrier Can Make Postpartum Life Easier</span><span class="outlet">The Bragging Mommy · Bc Babycare</span></a></li>
-      <li><a href="https://goodmenproject.com/parenting/how-public-babywearing-challenges-old-notions-of-manhood/" target="_blank" rel="noopener"><span class="title">How Public Babywearing Challenges Old Notions of Manhood</span><span class="outlet">Good Men Project · Bc Babycare</span></a></li>
-    </ul>
-  </section>
 
-  <section id="landing-pages">
-    <h2>Landing Pages &amp; UX Copy</h2>
+    <div class="group">
+      <h4>BetterAlt</h4>
+      <p class="client-desc">A wellness brand specializing in premium, third-party lab-tested Ayurvedic supplements — notably Himalayan Shilajit resin, gummies, and honey sticks for energy, focus, and immunity.</p>
+      <ul class="pieces">
+        <li><a href="https://www.womansworld.com/contributors/cut-through-the-wellness-clutter-with-this-ancient-remedy-for-ultimate-health" target="_blank" rel="noopener"><span class="title">Cut Through the Wellness Clutter With This Ancient Remedy for Ultimate Health</span><span class="outlet">Woman's World</span></a></li>
+        <li><a href="https://radaronline.com/p/the-future-of-anti-aging-means-going-back-to-an-ancient-remedy/" target="_blank" rel="noopener"><span class="title">The Future of Anti-aging Means Going Back to an Ancient Remedy</span><span class="outlet">Radar Online</span></a></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h4>Yeedi</h4>
+      <p class="client-desc">A robot vacuum and mop brand launched in 2019, focused on practical, automated home cleaning technology at budget-friendly to mid-range price points.</p>
+      <ul class="pieces">
+        <li><a href="https://okmagazine.com/p/robot-vacuum-must-have-addition-modern-homes/" target="_blank" rel="noopener"><span class="title">A Smarter Way to Clean: Why a Robot Vacuum Is a Must-Have Addition to Modern Homes</span><span class="outlet">OK! Magazine</span></a></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h4>Bc Babycare</h4>
+      <p class="client-desc">A designer-founded baby brand offering modern, high-quality, and safe baby products aimed at simplifying parenting.</p>
+      <ul class="pieces">
+        <li><a href="https://www.thebraggingmommy.com/why-the-right-baby-carrier-can-make-postpartum-life-easier/" target="_blank" rel="noopener"><span class="title">Why the Right Baby Carrier Can Make Postpartum Life Easier</span><span class="outlet">The Bragging Mommy</span></a></li>
+        <li><a href="https://goodmenproject.com/parenting/how-public-babywearing-challenges-old-notions-of-manhood/" target="_blank" rel="noopener"><span class="title">How Public Babywearing Challenges Old Notions of Manhood</span><span class="outlet">Good Men Project</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="subsection" id="landing-pages">
+    <h3 class="subsection-title">Landing Pages &amp; UX Copy</h3>
     <p class="section-desc">Conversion and product-interface copy.</p>
     <ul class="pieces">
       <li><a href="https://drive.google.com/file/d/1MBX_U4okFMRi_OJWoRGz1L5UQBJd1FCq/view?usp=sharing" target="_blank" rel="noopener"><span class="title">ViewQwest Residential Broadband</span><span class="outlet">ViewQwest</span></a></li>
       <li><a href="https://bondee.com/safety/safetyCenter" target="_blank" rel="noopener"><span class="title">Bondee Safety Hub</span><span class="outlet">Bondee</span></a></li>
     </ul>
-  </section>
+  </div>
 
-  <section id="reports">
-    <h2>Infographics &amp; Reports</h2>
+  <div class="subsection" id="reports">
+    <h3 class="subsection-title">Infographics &amp; Reports</h3>
     <p class="section-desc">Long-form B2B reports and infographic copy written for Singtel.</p>
     <ul class="pieces">
       <li><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/solution-brief-from-telco-to-techco.pdf" target="_blank" rel="noopener"><span class="title">From telco to techco: Enabling the future of digital transformation</span></a></li>
@@ -367,9 +432,10 @@
       <li><a href="https://cdn2.singteldigital.com/content/dam/singtel/business/sb/articles/strategies-to-upskills-diverse-workforce.pdf" target="_blank" rel="noopener"><span class="title">Tech-driven inclusivity: strategies to upskill a diverse workforce</span></a></li>
       <li><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/infographic-next-gen-security-for-the-remote-workforce.pdf" target="_blank" rel="noopener"><span class="title">Next-gen security for the remote workplace</span></a></li>
     </ul>
-  </section>
-  <section id="edms">
-    <h2>Email Marketing</h2>
+  </div>
+
+  <div class="subsection" id="edms">
+    <h3 class="subsection-title">Email Marketing</h3>
     <p class="section-desc">EDM campaigns written and designed for TradeSquare, Australia's largest wholesale marketplace.</p>
     <div class="gallery">
       <a href="assets/edms/tradesquare-welcome-summer-stock.png" target="_blank" rel="noopener">
@@ -397,14 +463,14 @@
         <div class="caption">'Tis the Season: TradeSquare Advent Calendar</div>
       </a>
     </div>
-  </section>
+  </div>
 
-  <section id="product-guides">
-    <h2>Product Guides</h2>
+  <div class="subsection" id="product-guides">
+    <h3 class="subsection-title">Product Guides</h3>
     <p class="section-desc">Consumer education guides written for appliance and product brands.</p>
 
     <div class="group">
-      <h3>Siemens</h3>
+      <h4>Siemens</h4>
       <ul class="pieces">
         <li><a href="assets/product-guides/siemens/connected-kitchen.pdf" target="_blank" rel="noopener"><span class="title">Connected Kitchen</span></a></li>
         <li><a href="assets/product-guides/siemens/get-to-know-your-oven.pdf" target="_blank" rel="noopener"><span class="title">Get to Know Your Oven</span></a></li>
@@ -422,12 +488,14 @@
         <li><a href="assets/product-guides/siemens/tips-hosting-dinner-party.pdf" target="_blank" rel="noopener"><span class="title">Tips for Hosting a Dinner Party</span></a></li>
       </ul>
     </div>
+  </div>
+
   </section>
 
 </main>
 
 <footer>
-  Peter Imbong · <a href="mailto:peterimbong@gmail.com" style="color:inherit">peterimbong@gmail.com</a> · <a href="https://linkedin.com/in/peterimbong" style="color:inherit" target="_blank" rel="noopener">LinkedIn</a>
+  Peter Imbong · <a href="mailto:peter@peterimbong.com" style="color:inherit">peter@peterimbong.com</a> · <a href="https://linkedin.com/in/peterimbong" style="color:inherit" target="_blank" rel="noopener">LinkedIn</a>
 </footer>
 
 </body>
