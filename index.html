@@ -103,58 +103,7 @@
   main {
     max-width: 760px;
     margin: 0 auto;
-    padding: 0 24px 96px;
-  }
-
-  /* Featured */
-  .featured {
-    margin-bottom: 56px;
-  }
-  .featured h2 {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin: 0 0 20px;
-  }
-  .featured-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-  .featured-card {
-    background: var(--bg);
-    padding: 24px;
-    text-decoration: none;
-    color: var(--fg);
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    transition: background 0.15s ease;
-  }
-  .featured-card:hover { background: var(--accent-wash); }
-  .featured-card .f-type {
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    color: var(--accent);
-    font-weight: 700;
-  }
-  .featured-card .f-title {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 1.3;
-    letter-spacing: -0.005em;
-  }
-  .featured-card .f-client {
-    color: var(--muted);
-    font-size: 0.82rem;
-    margin-top: auto;
-  }
-  @media (max-width: 620px) {
-    .featured-grid { grid-template-columns: 1fr; }
+    padding: 40px 24px 96px;
   }
 
   /* Name bar */
@@ -402,32 +351,6 @@
 </div>
 
 <main>
-
-  <section class="featured">
-    <h2>Featured</h2>
-    <div class="featured-grid">
-      <a class="featured-card" href="https://www.wired.com/story/dengue-vaccine-philippines-outbreak/" target="_blank" rel="noopener">
-        <span class="f-type">Journalism</span>
-        <span class="f-title">What happens when vaccine scepticism takes over? Look to the Philippines</span>
-        <span class="f-client">WIRED UK</span>
-      </a>
-      <a class="featured-card" href="https://web.archive.org/web/20180716170044/https://asia.nikkei.com/economy/philippines-tries-to-reignite-production" target="_blank" rel="noopener">
-        <span class="f-type">Journalism</span>
-        <span class="f-title">Philippines tries to reignite production</span>
-        <span class="f-client">Nikkei Asia</span>
-      </a>
-      <a class="featured-card" href="https://www.mi.com/global/discover/article?id=3768" target="_blank" rel="noopener">
-        <span class="f-type">Press Release</span>
-        <span class="f-title">Xiaomi SU7 Ultra Unveiled: The Ultimate Performance Technology Sedan</span>
-        <span class="f-client">Xiaomi</span>
-      </a>
-      <a class="featured-card" href="https://www.11.international/study-case/vidu" target="_blank" rel="noopener">
-        <span class="f-type">Case Study</span>
-        <span class="f-title">Vidu: Leading generative AI video platform known for its pioneering Multi-Entity Consistency feature</span>
-        <span class="f-client">Eleven International</span>
-      </a>
-    </div>
-  </section>
 
   <div class="filters">
     <h2 class="filter-heading">Browse the Archive</h2>
