@@ -116,6 +116,32 @@
     margin: 0 0 10px;
     font-weight: 600;
   }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .gallery a {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--card-bg);
+    text-decoration: none;
+  }
+  .gallery img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: top;
+  }
+  .gallery .caption {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    color: var(--fg);
+  }
+  .gallery a:hover .caption { color: var(--accent); }
   ul.pieces {
     list-style: none;
     margin: 0;
@@ -178,6 +204,8 @@
   <a href="#product-copy">Product Copy &amp; Articles</a>
   <a href="#landing-pages">Landing Pages &amp; UX Copy</a>
   <a href="#reports">Infographics &amp; Reports</a>
+  <a href="#edms">Email Marketing</a>
+  <a href="#product-guides">Product Guides</a>
 </nav>
 
 <main>
@@ -338,6 +366,57 @@
       <li><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/streamline-hybrid-hr-process-with-ease.pdf" target="_blank" rel="noopener"><span class="title">From Onboarding to Team Engagement: Streamline Hybrid HR Processes With Ease</span></a></li>
       <li><a href="https://cdn2.singteldigital.com/content/dam/singtel/business/sb/articles/strategies-to-upskills-diverse-workforce.pdf" target="_blank" rel="noopener"><span class="title">Tech-driven inclusivity: strategies to upskill a diverse workforce</span></a></li>
       <li><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/infographic-next-gen-security-for-the-remote-workforce.pdf" target="_blank" rel="noopener"><span class="title">Next-gen security for the remote workplace</span></a></li>
+    </ul>
+  </section>
+  <section id="edms">
+    <h2>Email Marketing</h2>
+    <p class="section-desc">EDM campaigns written and designed for TradeSquare, Australia's largest wholesale marketplace.</p>
+    <div class="gallery">
+      <a href="assets/edms/tradesquare-welcome-summer-stock.png" target="_blank" rel="noopener">
+        <img src="assets/edms/tradesquare-welcome-summer-stock.png" alt="TradeSquare welcome EDM: Welcome to the best place to buy your Summer stock" loading="lazy">
+        <div class="caption">Welcome to the Best Place to Buy Your Summer Stock</div>
+      </a>
+      <a href="assets/edms/tradesquare-sizzling-summer-steals.png" target="_blank" rel="noopener">
+        <img src="assets/edms/tradesquare-sizzling-summer-steals.png" alt="TradeSquare EDM: Sizzling Summer Steals, buy Australian wholesale" loading="lazy">
+        <div class="caption">Sizzling Summer Steals: Buy Australian Wholesale</div>
+      </a>
+      <a href="assets/edms/tradesquare-november-update.png" target="_blank" rel="noopener">
+        <img src="assets/edms/tradesquare-november-update.png" alt="TradeSquare November Update newsletter EDM" loading="lazy">
+        <div class="caption">November TradeSquare Update</div>
+      </a>
+      <a href="assets/edms/tradesquare-koala-launch.png" target="_blank" rel="noopener">
+        <img src="assets/edms/tradesquare-koala-launch.png" alt="Koala is now on TradeSquare launch EDM" loading="lazy">
+        <div class="caption">Koala is Now on TradeSquare: Launch Campaign</div>
+      </a>
+      <a href="assets/edms/tradesquare-platform-guide.png" target="_blank" rel="noopener">
+        <img src="assets/edms/tradesquare-platform-guide.png" alt="Discover Australian Wholesale platform guide EDM" loading="lazy">
+        <div class="caption">Discover Australian Wholesale: Platform Guide</div>
+      </a>
+      <a href="assets/edms/tradesquare-advent-calendar.png" target="_blank" rel="noopener">
+        <img src="assets/edms/tradesquare-advent-calendar.png" alt="TradeSquare Advent Calendar Christmas campaign EDM" loading="lazy">
+        <div class="caption">'Tis the Season: TradeSquare Advent Calendar</div>
+      </a>
+    </div>
+  </section>
+
+  <section id="product-guides">
+    <h2>Product Guides</h2>
+    <p class="section-desc">Consumer education guides on home appliances and food, sourcing to sustainable living.</p>
+    <ul class="pieces">
+      <li><a href="assets/product-guides/connected-kitchen.pdf" target="_blank" rel="noopener"><span class="title">Connected Kitchen</span></a></li>
+      <li><a href="assets/product-guides/get-to-know-your-oven.pdf" target="_blank" rel="noopener"><span class="title">Get to Know Your Oven</span></a></li>
+      <li><a href="assets/product-guides/get-to-know-your-hob-and-hood.pdf" target="_blank" rel="noopener"><span class="title">Get to Know Your Hob &amp; Hood</span></a></li>
+      <li><a href="assets/product-guides/get-to-know-your-fridge-and-freezer.pdf" target="_blank" rel="noopener"><span class="title">Get to Know Your Fridge &amp; Freezer</span></a></li>
+      <li><a href="assets/product-guides/coffee-expertise.pdf" target="_blank" rel="noopener"><span class="title">Coffee Expertise</span></a></li>
+      <li><a href="assets/product-guides/discover-meat-free-meals.pdf" target="_blank" rel="noopener"><span class="title">Discover Meat Free Meals</span></a></li>
+      <li><a href="assets/product-guides/how-to-prepare-brunch.pdf" target="_blank" rel="noopener"><span class="title">How to Prepare Brunch</span></a></li>
+      <li><a href="assets/product-guides/how-to-prepare-fish.pdf" target="_blank" rel="noopener"><span class="title">How to Prepare Fish</span></a></li>
+      <li><a href="assets/product-guides/how-to-prepare-healthy-dishes.pdf" target="_blank" rel="noopener"><span class="title">How to Prepare Healthy Dishes</span></a></li>
+      <li><a href="assets/product-guides/making-healthy-food-choices.pdf" target="_blank" rel="noopener"><span class="title">Making Healthy Food Choices</span></a></li>
+      <li><a href="assets/product-guides/how-to-store-food-properly.pdf" target="_blank" rel="noopener"><span class="title">How to Store Food Properly</span></a></li>
+      <li><a href="assets/product-guides/how-to-reduce-food-waste-at-home.pdf" target="_blank" rel="noopener"><span class="title">How to Reduce Food Waste at Home</span></a></li>
+      <li><a href="assets/product-guides/how-to-shop-sustainably.pdf" target="_blank" rel="noopener"><span class="title">How to Shop Sustainably</span></a></li>
+      <li><a href="assets/product-guides/tips-hosting-dinner-party.pdf" target="_blank" rel="noopener"><span class="title">Tips for Hosting a Dinner Party</span></a></li>
     </ul>
   </section>
 
