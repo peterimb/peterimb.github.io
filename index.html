@@ -148,27 +148,46 @@
     border-bottom: 1px solid var(--border);
     margin-bottom: 32px;
   }
+  .filter-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .filter-label svg { width: 11px; height: 11px; flex-shrink: 0; }
   .chip-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 9px;
+    margin-bottom: 14px;
   }
   .chip {
     font: inherit;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
+    font-weight: 600;
     color: var(--fg);
-    background: none;
-    border: 1px solid var(--border);
+    background: var(--bg);
+    border: 1.5px solid color-mix(in srgb, var(--fg) 28%, var(--bg));
     border-radius: 999px;
-    padding: 6px 14px;
+    padding: 7px 16px;
     cursor: pointer;
+    transition: border-color 0.12s ease, color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
   }
-  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 1px 0 var(--accent);
+  }
   .chip.active {
     background: var(--fg);
     border-color: var(--fg);
     color: var(--bg);
+    box-shadow: none;
   }
   .filter-secondary {
     display: flex;
@@ -263,7 +282,15 @@
     font-weight: 700;
   }
   @media (max-width: 560px) {
-    .row-meta { display: none; }
+    .row-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .row-client, .row-sep { display: none; }
+  }
+  @media (max-width: 460px) {
+    .row-thumb { display: none; }
   }
 
   #empty-state {
@@ -332,6 +359,7 @@
   </section>
 
   <div class="filters">
+    <p class="filter-label"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M4.5 8h7M7 12h2"/></svg>Click a category to filter the archive</p>
     <div class="chip-row" id="type-chips">
       <button class="chip active" data-filter-type="all">All</button>
       <button class="chip" data-filter-type="journalism">Journalism</button>
@@ -501,7 +529,7 @@
       if (show) visible++;
     });
 
-    countEl.textContent = visible + ' of ' + rows.length;
+    countEl.textContent = visible + ' of ' + rows.length + ' pieces';
     emptyEl.hidden = visible !== 0;
   }
 
