@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 480" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14283f"/>
+      <stop offset="100%" stop-color="#1d3557"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="55"/>
+    </filter>
+    <pattern id="hatch" width="26" height="26" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="26" stroke="#eaf0f6" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="480" fill="url(#bg)"/>
+  <rect width="1600" height="480" fill="url(#hatch)"/>
+
+  <circle cx="230" cy="110" r="230" fill="#eaf0f6" opacity="0.09" filter="url(#soft)"/>
+  <circle cx="860" cy="40" r="150" fill="#3a5a80" opacity="0.35" filter="url(#soft)"/>
+  <circle cx="1320" cy="390" r="270" fill="#fdf7f1" opacity="0.07" filter="url(#soft)"/>
+
+  <text x="1580" y="460" font-family="Georgia, 'Times New Roman', serif" font-size="600" fill="#eaf0f6" opacity="0.055" text-anchor="end">&#8221;</text>
+
+  <line x1="0" y1="479" x2="1600" y2="479" stroke="#0f1e30" stroke-width="1" opacity="0.5"/>
+</svg>
