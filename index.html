@@ -159,6 +159,81 @@
     font-size: 0.76rem;
   }
 
+  /* Clients */
+  .clients-section {
+    margin-bottom: 44px;
+  }
+  .section-heading {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 0 0 6px;
+  }
+  .section-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0 0 20px;
+    max-width: 56ch;
+  }
+  .client-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 10px;
+  }
+  .client-card {
+    font: inherit;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color 0.12s ease, background 0.12s ease;
+  }
+  .client-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-wash);
+  }
+  .client-card.active {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+  .client-card.active .client-name,
+  .client-card.active .client-desc,
+  .client-card.active .client-count {
+    color: #fff;
+  }
+  .client-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--fg);
+  }
+  .client-industry {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.64rem;
+    font-weight: 700;
+  }
+  .client-card.active .client-industry { color: #fff; opacity: 0.85; }
+  .client-desc {
+    font-size: 0.76rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .client-count {
+    font-size: 0.66rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .client-card.active .client-count { opacity: 0.85; }
+
   /* Filters */
   .filters {
     position: sticky;
@@ -214,12 +289,37 @@
   }
   .filter-secondary {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
   }
   .result-count {
     color: var(--muted);
     font-size: 0.78rem;
     white-space: nowrap;
+  }
+  .client-filter-badge {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--fg);
+    background: var(--accent-wash);
+    border-radius: 6px;
+    padding: 4px 6px 4px 10px;
+    white-space: nowrap;
+  }
+  .client-filter-badge.visible { display: inline-flex; }
+  .client-filter-badge button {
+    font: inherit;
+    font-size: 0.9rem;
+    border: none;
+    background: none;
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+    padding: 2px 4px;
   }
 
   /* Archive */
@@ -375,22 +475,90 @@
 
 <main>
 
+  <section class="clients-section" aria-labelledby="clients-heading">
+    <h2 id="clients-heading" class="section-heading">Selected Clients</h2>
+    <p class="section-sub">Newsrooms, agencies, and brands across tech, wellness, telecom, and lifestyle. Click a client to see their work below.</p>
+    <div class="client-grid" id="client-grid">
+      <button type="button" class="client-card" data-client="WIRED UK">
+        <span class="client-name">WIRED UK</span>
+        <span class="client-industry">Tech Media</span>
+        <span class="client-desc">Global tech, science, and culture magazine.</span>
+        <span class="client-count"></span>
+      </button>
+      <button type="button" class="client-card" data-client="Rappler">
+        <span class="client-name">Rappler</span>
+        <span class="client-industry">Journalism</span>
+        <span class="client-desc">Leading Philippine digital news and citizen journalism platform.</span>
+        <span class="client-count"></span>
+      </button>
+      <button type="button" class="client-card" data-client="Xiaomi">
+        <span class="client-name">Xiaomi</span>
+        <span class="client-industry">Consumer Tech</span>
+        <span class="client-desc">Chinese consumer electronics giant spanning phones, EVs, and smart homes.</span>
+        <span class="client-count"></span>
+      </button>
+      <button type="button" class="client-card" data-client="Singtel">
+        <span class="client-name">Singtel</span>
+        <span class="client-industry">Telecom</span>
+        <span class="client-desc">Singapore's largest telecommunications and technology services group.</span>
+        <span class="client-count"></span>
+      </button>
+      <button type="button" class="client-card" data-client="ViewQwest">
+        <span class="client-name">ViewQwest</span>
+        <span class="client-industry">Broadband ISP</span>
+        <span class="client-desc">Singapore-based broadband and connectivity provider.</span>
+        <span class="client-count"></span>
+      </button>
+      <button type="button" class="client-card" data-client="Bondee">
+        <span class="client-name">Bondee</span>
+        <span class="client-industry">Social Tech</span>
+        <span class="client-desc">Avatar-based social app from Singapore's Metadream.</span>
+        <span class="client-count"></span>
+      </button>
+      <button type="button" class="client-card" data-client="Eleven International">
+        <span class="client-name">Eleven International</span>
+        <span class="client-industry">PR &amp; Comms</span>
+        <span class="client-desc">Cross-border tech PR agency spanning the US, UK, China, and SEA.</span>
+        <span class="client-count"></span>
+      </button>
+      <button type="button" class="client-card" data-client="BetterAlt">
+        <span class="client-name">BetterAlt</span>
+        <span class="client-industry">Wellness</span>
+        <span class="client-desc">Mumbai-founded wellness brand blending Ayurveda with modern science.</span>
+        <span class="client-count"></span>
+      </button>
+      <button type="button" class="client-card" data-client="TradeSquare">
+        <span class="client-name">TradeSquare</span>
+        <span class="client-industry">B2B Trade</span>
+        <span class="client-desc">Australia's largest B2B wholesale marketplace for local SMEs.</span>
+        <span class="client-count"></span>
+      </button>
+      <button type="button" class="client-card" data-client="Siemens">
+        <span class="client-name">Siemens</span>
+        <span class="client-industry">Engineering</span>
+        <span class="client-desc">Global engineering and technology company spanning industry and home appliances.</span>
+        <span class="client-count"></span>
+      </button>
+    </div>
+  </section>
+
   <div class="filters">
     <h2 class="filter-heading">Browse the Archive</h2>
     <p class="filter-label"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M4.5 8h7M7 12h2"/></svg>Click a category below to filter</p>
     <div class="chip-row" id="type-chips" role="group" aria-label="Filter by content type">
       <button class="chip active" data-filter-type="all" aria-pressed="true">All</button>
       <button class="chip" data-filter-type="journalism" aria-pressed="false">Journalism</button>
-      <button class="chip" data-filter-type="blogs" aria-pressed="false">Blogs &amp; Thought Leadership</button>
-      <button class="chip" data-filter-type="press-releases" aria-pressed="false">Press Releases</button>
+      <button class="chip" data-filter-type="blogs" aria-pressed="false">Blogs</button>
+      <button class="chip" data-filter-type="press-releases" aria-pressed="false">Press</button>
       <button class="chip" data-filter-type="case-studies" aria-pressed="false">Case Studies</button>
-      <button class="chip" data-filter-type="product-copy" aria-pressed="false">Product Copy &amp; Articles</button>
-      <button class="chip" data-filter-type="landing-pages" aria-pressed="false">Landing Pages &amp; UX Copy</button>
-      <button class="chip" data-filter-type="reports" aria-pressed="false">Infographics &amp; Reports</button>
-      <button class="chip" data-filter-type="edms" aria-pressed="false">Email Marketing</button>
-      <button class="chip" data-filter-type="product-guides" aria-pressed="false">Product Guides</button>
+      <button class="chip" data-filter-type="product-copy" aria-pressed="false">Product Copy</button>
+      <button class="chip" data-filter-type="landing-pages" aria-pressed="false">Landing Pages</button>
+      <button class="chip" data-filter-type="reports" aria-pressed="false">Reports</button>
+      <button class="chip" data-filter-type="edms" aria-pressed="false">Email</button>
+      <button class="chip" data-filter-type="product-guides" aria-pressed="false">Guides</button>
     </div>
     <div class="filter-secondary">
+      <span class="client-filter-badge" id="client-filter-badge"><span id="client-filter-name"></span><button type="button" id="client-filter-clear" aria-label="Clear client filter">&times;</button></span>
       <span class="result-count" id="result-count" aria-live="polite"></span>
     </div>
   </div>
@@ -516,9 +684,15 @@
   var rows = Array.prototype.slice.call(document.querySelectorAll('#archive-list li:not(.type-divider)'));
   var dividers = Array.prototype.slice.call(document.querySelectorAll('#archive-list li.type-divider'));
   var typeChips = Array.prototype.slice.call(document.querySelectorAll('#type-chips .chip'));
+  var clientCards = Array.prototype.slice.call(document.querySelectorAll('.client-card'));
   var countEl = document.getElementById('result-count');
   var emptyEl = document.getElementById('empty-state');
+  var clientBadge = document.getElementById('client-filter-badge');
+  var clientBadgeName = document.getElementById('client-filter-name');
+  var clientBadgeClear = document.getElementById('client-filter-clear');
+  var filtersSection = document.querySelector('.filters');
   var activeType = 'all';
+  var activeClient = null;
 
   function applyFilters() {
     var visible = 0;
@@ -526,7 +700,9 @@
 
     rows.forEach(function (row) {
       var rowType = row.getAttribute('data-type');
-      var show = activeType === 'all' || rowType === activeType;
+      var rowClient = row.getAttribute('data-client');
+      var show = (activeType === 'all' || rowType === activeType) &&
+        (!activeClient || rowClient === activeClient);
       row.hidden = !show;
       if (show) {
         visible++;
@@ -543,6 +719,20 @@
     emptyEl.hidden = visible !== 0;
   }
 
+  function setActiveClient(client) {
+    activeClient = client;
+    clientCards.forEach(function (card) {
+      card.classList.toggle('active', card.getAttribute('data-client') === client);
+    });
+    if (client) {
+      clientBadgeName.textContent = client;
+      clientBadge.classList.add('visible');
+    } else {
+      clientBadge.classList.remove('visible');
+    }
+    applyFilters();
+  }
+
   typeChips.forEach(function (chip) {
     chip.addEventListener('click', function () {
       typeChips.forEach(function (c) {
@@ -552,9 +742,43 @@
       chip.classList.add('active');
       chip.setAttribute('aria-pressed', 'true');
       activeType = chip.getAttribute('data-filter-type');
-      applyFilters();
+      setActiveClient(null);
     });
   });
+
+  clientCards.forEach(function (card) {
+    var client = card.getAttribute('data-client');
+    var count = rows.filter(function (row) {
+      return row.getAttribute('data-client') === client;
+    }).length;
+    var countLabel = card.querySelector('.client-count');
+    if (countLabel) {
+      countLabel.textContent = count + (count === 1 ? ' piece' : ' pieces');
+    }
+
+    card.addEventListener('click', function () {
+      typeChips.forEach(function (c) {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      var allChip = document.querySelector('[data-filter-type="all"]');
+      if (allChip) {
+        allChip.classList.add('active');
+        allChip.setAttribute('aria-pressed', 'true');
+      }
+      activeType = 'all';
+      setActiveClient(activeClient === client ? null : client);
+      if (filtersSection) {
+        filtersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  if (clientBadgeClear) {
+    clientBadgeClear.addEventListener('click', function () {
+      setActiveClient(null);
+    });
+  }
 
   applyFilters();
 })();
