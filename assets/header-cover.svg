@@ -1,33 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 480" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#14283f"/>
-      <stop offset="100%" stop-color="#1d3557"/>
+      <stop offset="0%" stop-color="#1c1f22"/>
+      <stop offset="100%" stop-color="#33475f"/>
     </linearGradient>
     <pattern id="hatch" width="26" height="26" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="0" y2="26" stroke="#eaf0f6" stroke-opacity="0.05" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0" y2="26" stroke="#f0efeb" stroke-opacity="0.05" stroke-width="1"/>
     </pattern>
   </defs>
 
   <rect width="1600" height="480" fill="url(#bg)"/>
 
-  <polygon points="0,0 360,0 70,480 0,480" fill="#24405f"/>
-  <polygon points="0,0 360,0 190,260" fill="#3a5a80" opacity="0.55"/>
-  <polygon points="190,260 360,0 300,480 70,480" fill="#14283f" opacity="0.5"/>
+  <polygon points="0,0 360,0 70,480 0,480" fill="#2a3540"/>
+  <polygon points="0,0 360,0 190,260" fill="#4a5c70" opacity="0.55"/>
+  <polygon points="190,260 360,0 300,480 70,480" fill="#1c1f22" opacity="0.5"/>
 
-  <polygon points="1600,480 1230,480 1520,0 1600,0" fill="#24405f"/>
-  <polygon points="1600,480 1230,480 1410,220" fill="#3a5a80" opacity="0.55"/>
-  <polygon points="1410,220 1230,480 1300,0 1520,0" fill="#14283f" opacity="0.45"/>
+  <polygon points="1600,480 1230,480 1520,0 1600,0" fill="#2a3540"/>
+  <polygon points="1600,480 1230,480 1410,220" fill="#4a5c70" opacity="0.55"/>
+  <polygon points="1410,220 1230,480 1300,0 1520,0" fill="#1c1f22" opacity="0.45"/>
 
-  <polygon points="620,480 900,480 830,190 700,260" fill="#2c4a6e" opacity="0.7"/>
-  <polygon points="700,260 830,190 780,60" fill="#3a5a80" opacity="0.6"/>
+  <polygon points="620,480 900,480 830,190 700,260" fill="#a8562f" opacity="0.6"/>
+  <polygon points="700,260 830,190 780,60" fill="#c17246" opacity="0.5"/>
 
-  <polygon points="560,0 800,0 700,170" fill="#eaf0f6" opacity="0.09"/>
-  <polygon points="980,30 1200,30 1110,200" fill="#eaf0f6" opacity="0.06"/>
-  <polygon points="420,50 470,50 445,100" fill="#fdf7f1" opacity="0.14"/>
-  <polygon points="1330,340 1380,340 1355,390" fill="#fdf7f1" opacity="0.1"/>
+  <polygon points="560,0 800,0 700,170" fill="#f0efeb" opacity="0.08"/>
+  <polygon points="980,30 1200,30 1110,200" fill="#f0efeb" opacity="0.06"/>
+  <polygon points="420,50 470,50 445,100" fill="#f0efeb" opacity="0.12"/>
+  <polygon points="1330,340 1380,340 1355,390" fill="#f0efeb" opacity="0.08"/>
 
   <rect width="1600" height="480" fill="url(#hatch)"/>
 
-  <line x1="0" y1="479" x2="1600" y2="479" stroke="#0f1e30" stroke-width="1" opacity="0.5"/>
+  <line x1="0" y1="479" x2="1600" y2="479" stroke="#121416" stroke-width="1" opacity="0.5"/>
 </svg>

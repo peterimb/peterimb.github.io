@@ -11,12 +11,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #ffffff;
-    --fg: #161513;
-    --muted: #767676;
-    --accent: #1d3557;
-    --accent-wash: #eaf0f6;
-    --border: #eaeaea;
+    --bg: #f0efeb;
+    --fg: #1c1f22;
+    --muted: #726e64;
+    --accent: #33475f;
+    --accent-wash: #e2e6ea;
+    --accent-secondary: #a8562f;
+    --border: #dedacd;
     --serif: "Fraunces", Georgia, "Times New Roman", serif;
   }
   * { box-sizing: border-box; }
@@ -38,15 +39,15 @@
     pointer-events: none;
     background-image: repeating-linear-gradient(
       45deg,
-      rgba(29,53,87,0.05) 0,
-      rgba(29,53,87,0.05) 1px,
+      rgba(51,71,95,0.05) 0,
+      rgba(51,71,95,0.05) 1px,
       transparent 1px,
       transparent 64px
     ),
     repeating-linear-gradient(
       -45deg,
-      rgba(29,53,87,0.05) 0,
-      rgba(29,53,87,0.05) 1px,
+      rgba(51,71,95,0.05) 0,
+      rgba(51,71,95,0.05) 1px,
       transparent 1px,
       transparent 64px
     );
@@ -64,14 +65,6 @@
     display: block;
     object-fit: cover;
     border-bottom: 1px solid var(--border);
-  }
-  header .eyebrow {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--accent);
-    font-weight: 600;
-    margin: 0 0 18px;
   }
   header h1 {
     font-family: var(--serif);
@@ -102,12 +95,21 @@
     flex-wrap: wrap;
   }
   header .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     color: var(--fg);
     text-decoration: underline;
     text-decoration-color: var(--border);
     font-size: 0.85rem;
   }
   header .links a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+  header .links a svg,
+  footer a svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
 
   main {
     max-width: 760px;
@@ -192,129 +194,32 @@
   }
   .chip {
     font: inherit;
-    font-size: 0.84rem;
-    font-weight: 700;
-    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
     background: var(--accent-wash);
-    border: 2px solid var(--accent);
+    border: none;
     border-radius: 6px;
-    padding: 8px 18px;
+    padding: 8px 16px;
     cursor: pointer;
-    transition: transform 0.12s ease, color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+    transition: color 0.12s ease, background 0.12s ease;
   }
   .chip:hover {
-    background: var(--accent);
-    color: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 60%, black);
+    background: color-mix(in srgb, var(--accent) 16%, var(--accent-wash));
+    color: var(--accent);
   }
   .chip.active {
     background: var(--accent);
-    border-color: var(--accent);
     color: #fff;
-    box-shadow: none;
-    transform: none;
-  }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
   }
   .filter-secondary {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 16px;
-  }
-  .filter-secondary input[type="text"] {
-    font: inherit;
-    font-size: 0.85rem;
-    color: var(--fg);
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 7px 10px;
-  }
-  .filter-secondary input[type="text"] { min-width: 200px; flex: 1; }
-  .filter-secondary input[type="text"]:focus {
-    outline: none;
-    border-color: var(--accent);
+    justify-content: flex-end;
   }
   .result-count {
     color: var(--muted);
     font-size: 0.78rem;
     white-space: nowrap;
-    margin-left: auto;
-  }
-  .client-combobox {
-    position: relative;
-    min-width: 200px;
-  }
-  .combobox-input {
-    font: inherit;
-    font-size: 0.85rem;
-    color: var(--fg);
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 7px 30px 7px 10px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .combobox-input:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-  .combobox-clear {
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: none;
-    color: var(--muted);
-    font-size: 1rem;
-    line-height: 1;
-    cursor: pointer;
-    padding: 4px;
-  }
-  .combobox-clear:hover { color: var(--accent); }
-  .combobox-list {
-    position: absolute;
-    top: calc(100% + 4px);
-    left: 0;
-    right: 0;
-    z-index: 15;
-    margin: 0;
-    padding: 4px;
-    list-style: none;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-    max-height: 240px;
-    overflow-y: auto;
-  }
-  .combobox-list li {
-    padding: 7px 10px;
-    font-size: 0.85rem;
-    color: var(--fg);
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .combobox-list li.highlighted {
-    background: var(--accent-wash);
-    color: var(--accent);
-  }
-  .combobox-list li.no-match {
-    color: var(--muted);
-    cursor: default;
   }
 
   /* Archive */
@@ -374,10 +279,11 @@
     font-size: 0.62rem;
     font-weight: 700;
     letter-spacing: 0.04em;
-    color: var(--muted);
-    border: 1px solid var(--border);
+    color: #fff;
+    background: var(--accent-secondary);
+    border: none;
     border-radius: 4px;
-    padding: 1px 5px;
+    padding: 2px 6px;
     margin-left: 8px;
     vertical-align: middle;
   }
@@ -434,7 +340,13 @@
     font-style: italic;
     color: var(--fg);
   }
-  footer a { color: inherit; text-decoration-color: var(--border); }
+  footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: inherit;
+    text-decoration-color: var(--border);
+  }
   footer a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 </style>
 </head>
@@ -445,13 +357,12 @@
 <img class="cover-banner" src="assets/header-cover.svg" alt="" role="presentation">
 
 <header id="top">
-  <p class="eyebrow">Selected Work</p>
   <h1>Peter Imbong</h1>
   <p class="role">Content Strategist · Editor · Copywriter</p>
   <p class="bio">A collection of journalism, brand storytelling, and copywriting written for newsrooms, agencies, and companies across tech, wellness, telecom, and lifestyle.</p>
   <div class="links">
-    <a href="mailto:peter@peterimbong.com">peter@peterimbong.com</a>
-    <a href="https://linkedin.com/in/peterimbong" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:peter@peterimbong.com"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M3 5.5l7 6 7-6"/></svg>peter@peterimbong.com</a>
+    <a href="https://linkedin.com/in/peterimbong" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6.5" cy="6.7" r="1.1"/><path d="M5.6 8.9h1.8v6.2H5.6z"/><path d="M9.3 8.9h1.75v.95h.03c.24-.46.85-.95 1.75-.95 1.87 0 2.22 1.23 2.22 2.83v3.4h-1.8v-3.02c0-.72-.02-1.65-1-1.65-1 0-1.15.78-1.15 1.6v3.07h-1.8z"/></svg>LinkedIn</a>
   </div>
 </header>
 
@@ -466,7 +377,7 @@
 
   <div class="filters">
     <h2 class="filter-heading">Browse the Archive</h2>
-    <p class="filter-label"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M4.5 8h7M7 12h2"/></svg>Click a category below to filter — or search and narrow by client</p>
+    <p class="filter-label"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M4.5 8h7M7 12h2"/></svg>Click a category below to filter</p>
     <div class="chip-row" id="type-chips" role="group" aria-label="Filter by content type">
       <button class="chip active" data-filter-type="all" aria-pressed="true">All</button>
       <button class="chip" data-filter-type="journalism" aria-pressed="false">Journalism</button>
@@ -480,14 +391,6 @@
       <button class="chip" data-filter-type="product-guides" aria-pressed="false">Product Guides</button>
     </div>
     <div class="filter-secondary">
-      <div class="client-combobox">
-        <label for="client-input" class="sr-only">Filter by client</label>
-        <input type="text" id="client-input" class="combobox-input" role="combobox" aria-expanded="false" aria-controls="client-listbox" aria-autocomplete="list" autocomplete="off" placeholder="All clients">
-        <button type="button" class="combobox-clear" id="client-clear" aria-label="Clear client filter" hidden>&times;</button>
-        <ul id="client-listbox" class="combobox-list" role="listbox" hidden></ul>
-      </div>
-      <label for="search-input" class="sr-only">Search titles</label>
-      <input type="text" id="search-input" placeholder="Search titles…">
       <span class="result-count" id="result-count" aria-live="polite"></span>
     </div>
   </div>
@@ -604,7 +507,7 @@
 </main>
 
 <footer>
-  <span class="name">Peter Imbong</span> · <a href="mailto:peter@peterimbong.com">peter@peterimbong.com</a> · <a href="https://linkedin.com/in/peterimbong" target="_blank" rel="noopener">LinkedIn</a>
+  <span class="name">Peter Imbong</span> · <a href="mailto:peter@peterimbong.com"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M3 5.5l7 6 7-6"/></svg>peter@peterimbong.com</a> · <a href="https://linkedin.com/in/peterimbong" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6.5" cy="6.7" r="1.1"/><path d="M5.6 8.9h1.8v6.2H5.6z"/><path d="M9.3 8.9h1.75v.95h.03c.24-.46.85-.95 1.75-.95 1.87 0 2.22 1.23 2.22 2.83v3.4h-1.8v-3.02c0-.72-.02-1.65-1-1.65-1 0-1.15.78-1.15 1.6v3.07h-1.8z"/></svg>LinkedIn</a>
 </footer>
 
 <script>
@@ -613,28 +516,17 @@
   var rows = Array.prototype.slice.call(document.querySelectorAll('#archive-list li:not(.type-divider)'));
   var dividers = Array.prototype.slice.call(document.querySelectorAll('#archive-list li.type-divider'));
   var typeChips = Array.prototype.slice.call(document.querySelectorAll('#type-chips .chip'));
-  var searchInput = document.getElementById('search-input');
   var countEl = document.getElementById('result-count');
   var emptyEl = document.getElementById('empty-state');
   var activeType = 'all';
-  var selectedClient = 'all';
-
-  var clients = ['Bc Babycare', 'BetterAlt', 'Bondee', 'Eleven International', 'Entrepreneur',
-    'F&B Report', 'Nikkei Asia', 'Publish.org', 'Rappler', 'Siemens', 'Singtel', 't2 World',
-    'TradeSquare', 'ViewQwest', 'WIRED UK', 'Xiaomi', 'Yeedi'];
 
   function applyFilters() {
-    var searchVal = searchInput.value.trim().toLowerCase();
     var visible = 0;
     var visibleTypes = {};
 
     rows.forEach(function (row) {
       var rowType = row.getAttribute('data-type');
-      var matchesType = activeType === 'all' || rowType === activeType;
-      var matchesClient = selectedClient === 'all' || row.getAttribute('data-client') === selectedClient;
-      var title = row.querySelector('.row-title').textContent.toLowerCase();
-      var matchesSearch = searchVal === '' || title.indexOf(searchVal) !== -1;
-      var show = matchesType && matchesClient && matchesSearch;
+      var show = activeType === 'all' || rowType === activeType;
       row.hidden = !show;
       if (show) {
         visible++;
@@ -664,126 +556,7 @@
     });
   });
 
-  searchInput.addEventListener('input', applyFilters);
-
   applyFilters();
-
-  var input = document.getElementById('client-input');
-  var listbox = document.getElementById('client-listbox');
-  var clearBtn = document.getElementById('client-clear');
-  var highlightedIndex = -1;
-  var visibleOptions = [];
-
-  function renderOptions(query) {
-    var q = query.trim().toLowerCase();
-    var matches = clients.filter(function (c) { return c.toLowerCase().indexOf(q) !== -1; });
-    listbox.innerHTML = '';
-    highlightedIndex = -1;
-    visibleOptions = matches;
-
-    if (matches.length === 0) {
-      var li = document.createElement('li');
-      li.className = 'no-match';
-      li.textContent = 'No matching clients';
-      listbox.appendChild(li);
-      return;
-    }
-
-    matches.forEach(function (name, i) {
-      var li = document.createElement('li');
-      li.textContent = name;
-      li.setAttribute('role', 'option');
-      li.dataset.value = name;
-      li.addEventListener('mousedown', function (e) {
-        e.preventDefault();
-        selectClient(name);
-      });
-      listbox.appendChild(li);
-    });
-  }
-
-  function openList() {
-    renderOptions(input.value);
-    listbox.hidden = false;
-    input.setAttribute('aria-expanded', 'true');
-  }
-
-  function closeList() {
-    listbox.hidden = true;
-    input.setAttribute('aria-expanded', 'false');
-    highlightedIndex = -1;
-  }
-
-  function updateHighlight() {
-    var items = listbox.querySelectorAll('li[role="option"]');
-    items.forEach(function (li, i) {
-      li.classList.toggle('highlighted', i === highlightedIndex);
-    });
-    if (highlightedIndex >= 0 && items[highlightedIndex]) {
-      items[highlightedIndex].scrollIntoView({ block: 'nearest' });
-    }
-  }
-
-  function selectClient(name) {
-    selectedClient = name;
-    input.value = name;
-    clearBtn.hidden = false;
-    closeList();
-    applyFilters();
-  }
-
-  function clearClient() {
-    selectedClient = 'all';
-    input.value = '';
-    clearBtn.hidden = true;
-    closeList();
-    applyFilters();
-    input.focus();
-  }
-
-  input.addEventListener('input', function () {
-    if (input.value.trim() === '') {
-      selectedClient = 'all';
-      clearBtn.hidden = true;
-      applyFilters();
-    }
-    openList();
-  });
-
-  input.addEventListener('focus', openList);
-
-  input.addEventListener('blur', function () {
-    setTimeout(closeList, 120);
-  });
-
-  input.addEventListener('keydown', function (e) {
-    if (listbox.hidden && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
-      openList();
-      return;
-    }
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (visibleOptions.length === 0) return;
-      highlightedIndex = (highlightedIndex + 1) % visibleOptions.length;
-      updateHighlight();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (visibleOptions.length === 0) return;
-      highlightedIndex = (highlightedIndex - 1 + visibleOptions.length) % visibleOptions.length;
-      updateHighlight();
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      if (highlightedIndex >= 0 && visibleOptions[highlightedIndex]) {
-        selectClient(visibleOptions[highlightedIndex]);
-      } else if (visibleOptions.length === 1) {
-        selectClient(visibleOptions[0]);
-      }
-    } else if (e.key === 'Escape') {
-      closeList();
-    }
-  });
-
-  clearBtn.addEventListener('click', clearClient);
 })();
 
 (function () {
