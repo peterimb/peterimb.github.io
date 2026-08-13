@@ -130,15 +130,23 @@
     flex-wrap: wrap;
   }
   .client-mark {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    opacity: 0.8;
+    transition: opacity 0.15s ease;
+  }
+  .client-mark:hover { opacity: 1; }
+  .client-mark img { display: block; height: 100%; width: auto; }
+  .client-mark.text {
     font-family: var(--mono);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     color: var(--ink-soft);
-    opacity: 0.75;
-    transition: opacity 0.15s ease, color 0.15s ease;
+    transition: color 0.15s ease;
   }
-  .client-mark:hover { opacity: 1; color: var(--wire); }
+  .client-mark.text:hover { color: var(--wire); }
 
   /* Section headers */
   .section { padding: 52px 0; }
@@ -347,16 +355,16 @@
   <div class="wrap">
     <span class="clients-label">Selected Clients</span>
     <div class="clients-marks">
-      <span class="client-mark">WIRED UK</span>
-      <span class="client-mark">Rappler</span>
-      <span class="client-mark">Xiaomi</span>
-      <span class="client-mark">Singtel</span>
-      <span class="client-mark">ViewQwest</span>
-      <span class="client-mark">Bondee</span>
-      <span class="client-mark">Eleven International</span>
-      <span class="client-mark">BetterAlt</span>
-      <span class="client-mark">TradeSquare</span>
-      <span class="client-mark">Siemens</span>
+      <span class="client-mark"><img src="assets/logos/wired-uk.svg" alt="WIRED UK"></span>
+      <span class="client-mark"><img src="assets/logos/rappler.svg" alt="Rappler"></span>
+      <span class="client-mark"><img src="assets/logos/xiaomi.svg" alt="Xiaomi"></span>
+      <span class="client-mark"><img src="assets/logos/singtel.svg" alt="Singtel"></span>
+      <span class="client-mark"><img src="assets/logos/viewqwest.png" alt="ViewQwest"></span>
+      <span class="client-mark text">Bondee</span>
+      <span class="client-mark text">Eleven International</span>
+      <span class="client-mark"><img src="assets/logos/betteralt.png" alt="BetterAlt"></span>
+      <span class="client-mark text">TradeSquare</span>
+      <span class="client-mark"><img src="assets/logos/siemens.svg" alt="Siemens"></span>
     </div>
   </div>
 </div>
