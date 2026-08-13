@@ -6,826 +6,573 @@
 <title>Peter Imbong — Content Strategist, Editor, Copywriter</title>
 <meta name="description" content="Portfolio of Peter Imbong: journalism, thought leadership, press releases, case studies, and product copy.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f0efeb;
-    --fg: #1c1f22;
-    --muted: #726e64;
-    --accent: #33475f;
-    --accent-wash: #e2e6ea;
-    --accent-secondary: #a8562f;
-    --border: #dedacd;
-    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --paper: #F4F6F9;
+    --paper-raised: #E7ECF1;
+    --ink: #1C2B3A;
+    --ink-soft: #52667A;
+    --ink-faint: #8898A8;
+    --rule: #D6DEE6;
+    --wire: #2C6CA6;
+    --block: #1C2B3A;
+    --block-ink: #F4F6F9;
+    --block-ink-soft: #A9BBCC;
+    --block-accent: #7FB8E8;
+    --serif: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   }
+
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  a { text-underline-offset: 3px; }
+  a { color: inherit; }
 
-  .bg-parallax {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background-image: repeating-linear-gradient(
-      45deg,
-      rgba(51,71,95,0.05) 0,
-      rgba(51,71,95,0.05) 1px,
-      transparent 1px,
-      transparent 64px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      rgba(51,71,95,0.05) 0,
-      rgba(51,71,95,0.05) 1px,
-      transparent 1px,
-      transparent 64px
-    );
-    background-position: 0 0, 0 0;
-  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
 
-  header {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 56px 24px 40px;
-  }
-  .cover-banner {
-    width: 100%;
-    height: 240px;
-    display: block;
-    object-fit: cover;
-    border-bottom: 1px solid var(--border);
-  }
-  header h1 {
-    font-family: var(--serif);
-    font-size: 3rem;
-    font-weight: 500;
-    margin: 0 0 12px;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-  }
-  header p.role {
-    color: var(--muted);
-    font-weight: 500;
-    margin: 0 0 24px;
-    font-size: 0.9rem;
-    letter-spacing: 0.02em;
-    font-style: italic;
-    font-family: var(--serif);
-  }
-  header p.bio {
-    color: var(--muted);
-    max-width: 54ch;
-    font-size: 1rem;
-  }
-  header .links {
-    margin-top: 24px;
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  header .links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--fg);
-    text-decoration: underline;
-    text-decoration-color: var(--border);
-    font-size: 0.85rem;
-  }
-  header .links a:hover { text-decoration-color: var(--accent); color: var(--accent); }
-  header .links a svg,
-  footer a svg {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-  }
-
-  main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 40px 24px 96px;
-  }
-
-  /* Name bar */
-  .name-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 12;
-    background: color-mix(in srgb, var(--bg) 94%, transparent);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    opacity: 0;
-    transform: translateY(-100%);
-    pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease;
-  }
-  .name-bar.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  .name-bar-inner {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 11px 24px;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-  .name-bar-inner a {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--fg);
-    text-decoration: none;
-  }
-  .name-bar-inner a:hover { color: var(--accent); }
-  .name-bar-role {
-    color: var(--muted);
-    font-size: 0.76rem;
-  }
-
-  /* Clients */
-  .clients-section {
-    margin-bottom: 44px;
-  }
-  .section-heading {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 500;
-    margin: 0 0 6px;
-  }
-  .section-sub {
-    font-size: 0.82rem;
-    color: var(--muted);
-    margin: 0 0 20px;
-    max-width: 56ch;
-  }
-  .client-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: 10px;
-  }
-  .client-card {
-    font: inherit;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 14px;
-    cursor: pointer;
-    transition: border-color 0.12s ease, background 0.12s ease;
-  }
-  .client-card:hover {
-    border-color: var(--accent);
-    background: var(--accent-wash);
-  }
-  .client-card.active {
-    border-color: var(--accent);
-    background: var(--accent);
-  }
-  .client-card.active .client-name,
-  .client-card.active .client-desc,
-  .client-card.active .client-count {
-    color: #fff;
-  }
-  .client-name {
-    font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--fg);
-  }
-  .client-industry {
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.64rem;
-    font-weight: 700;
-  }
-  .client-card.active .client-industry { color: #fff; opacity: 0.85; }
-  .client-desc {
-    font-size: 0.76rem;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-  .client-count {
-    font-size: 0.66rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-weight: 700;
-    margin-top: 2px;
-  }
-  .client-card.active .client-count { opacity: 0.85; }
-
-  /* Filters */
-  .filters {
-    position: sticky;
-    top: 49px;
-    z-index: 10;
-    background: color-mix(in srgb, var(--bg) 94%, transparent);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 16px 0 14px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 32px;
-  }
-  .filter-heading {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 500;
-    margin: 0 0 4px;
-  }
-  .filter-label {
-    font-size: 0.82rem;
-    color: var(--muted);
-    margin: 0 0 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .filter-label svg { width: 13px; height: 13px; flex-shrink: 0; color: var(--accent); }
-  .chip-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-  .chip {
-    font: inherit;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--muted);
-    background: var(--accent-wash);
-    border: none;
-    border-radius: 6px;
-    padding: 8px 16px;
-    cursor: pointer;
-    transition: color 0.12s ease, background 0.12s ease;
-  }
-  .chip:hover {
-    background: color-mix(in srgb, var(--accent) 16%, var(--accent-wash));
-    color: var(--accent);
-  }
-  .chip.active {
-    background: var(--accent);
-    color: #fff;
-  }
-  .filter-secondary {
+  /* Utility bar */
+  .utility-bar { border-bottom: 1px solid var(--rule); }
+  .utility-bar .wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
   }
-  .result-count {
-    color: var(--muted);
+  .utility-bar nav { display: flex; gap: 22px; }
+  .utility-bar nav a { text-decoration: none; color: var(--ink-soft); }
+  .utility-bar nav a:hover { color: var(--wire); }
+
+  /* Masthead — color block */
+  .masthead {
+    background-color: var(--block);
+    background-image: radial-gradient(rgba(244, 246, 249, 0.16) 1.2px, transparent 1.6px);
+    background-size: 16px 16px;
+    color: var(--block-ink);
+    padding: 56px 0 64px;
+  }
+  .masthead h1 {
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 400;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--block-ink);
+  }
+  .masthead .role {
+    font-family: var(--mono);
     font-size: 0.78rem;
-    white-space: nowrap;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--block-accent);
+    margin: 0 0 22px;
   }
-  .client-filter-badge {
-    display: none;
+  .masthead .bio {
+    max-width: 56ch;
+    font-size: 1.08rem;
+    color: var(--block-ink-soft);
+    margin: 0 0 26px;
+  }
+  .masthead .contact {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+  }
+  .masthead .contact a {
+    text-decoration: none;
+    color: var(--block-ink);
+    border-bottom: 1px solid rgba(244, 246, 249, 0.3);
+    padding-bottom: 2px;
+  }
+  .masthead .contact a:hover { border-color: var(--block-accent); color: var(--block-accent); }
+
+  /* Clients — quiet wordmark strip */
+  .clients-strip {
+    background: var(--paper-raised);
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0;
+  }
+  .clients-strip .wrap {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.78rem;
-    color: var(--fg);
-    background: var(--accent-wash);
-    border-radius: 6px;
-    padding: 4px 6px 4px 10px;
-    white-space: nowrap;
+    gap: 14px 40px;
+    flex-wrap: wrap;
   }
-  .client-filter-badge.visible { display: inline-flex; }
-  .client-filter-badge button {
-    font: inherit;
-    font-size: 0.9rem;
-    border: none;
-    background: none;
-    color: var(--accent);
-    cursor: pointer;
+  .clients-label {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+  }
+  .clients-marks {
+    display: flex;
+    align-items: center;
+    gap: 12px 30px;
+    flex-wrap: wrap;
+  }
+  .client-mark {
+    font-family: var(--mono);
+    font-size: 0.78rem;
     font-weight: 700;
-    line-height: 1;
-    padding: 2px 4px;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    opacity: 0.75;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+  .client-mark:hover { opacity: 1; color: var(--wire); }
+
+  /* Section headers */
+  .section { padding: 52px 0; }
+  .section + .section { border-top: 1px solid var(--rule); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 { font-size: 1.7rem; font-weight: 400; margin: 0; }
+  .section-head .note {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+  }
+
+  /* Dispatch cards */
+  .lead-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--rule);
+    padding: 34px;
+    margin-bottom: 18px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .lead-card:hover { border-color: var(--wire); background: var(--paper-raised); }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--wire);
+    margin-bottom: 14px;
+  }
+  .lead-card h3 {
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.22;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .lead-card p {
+    max-width: 66ch;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    margin: 0 0 18px;
+  }
+  .read-link {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .lead-card:hover .read-link { color: var(--wire); }
+  .read-link::after { content: " \2192"; }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--rule);
+    padding: 26px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .card:hover { border-color: var(--wire); background: var(--paper-raised); }
+  .card h3 {
+    font-size: 1.28rem;
+    font-weight: 400;
+    line-height: 1.28;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .card p { font-size: 0.92rem; color: var(--ink-soft); margin: 0 0 16px; }
+  @media (max-width: 720px) {
+    .card-grid { grid-template-columns: 1fr; }
   }
 
   /* Archive */
-  ul.archive {
-    list-style: none;
-    margin: 0 0 96px;
-    padding: 0;
-  }
-  ul.archive li {
-    border-bottom: 1px solid var(--border);
-  }
-  ul.archive li:last-child { border-bottom: none; }
-  ul.archive li.type-divider {
-    border-bottom: none;
-    padding: 30px 0 8px;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    font-weight: 700;
-    color: var(--accent);
-  }
-  ul.archive li.type-divider:first-child { padding-top: 0; }
-  ul.archive a {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 13px 0;
-    color: var(--fg);
-    text-decoration: none;
-  }
-  ul.archive a:hover .row-title { color: var(--accent); }
-  ul.archive a:hover .row-thumb { border-color: var(--accent); }
-  .row-thumb {
-    width: 44px;
-    height: 44px;
-    object-fit: cover;
-    object-position: top;
-    border: 1px solid var(--border);
-    flex-shrink: 0;
-  }
-  .row-title {
-    font-size: 0.93rem;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-  .row-title::after {
-    content: "↗";
-    display: inline-block;
-    margin-left: 6px;
-    font-size: 0.78em;
-    color: var(--muted);
-    opacity: 0.55;
-  }
-  ul.archive a:hover .row-title::after { color: var(--accent); opacity: 1; }
-  .badge {
-    display: inline-block;
-    font-size: 0.62rem;
-    font-weight: 700;
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .tab {
+    font: inherit;
+    font-family: var(--mono);
+    font-size: 0.72rem;
     letter-spacing: 0.04em;
-    color: #fff;
-    background: var(--accent-secondary);
-    border: none;
-    border-radius: 4px;
-    padding: 2px 6px;
-    margin-left: 8px;
-    vertical-align: middle;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: none;
+    border: 1px solid var(--rule);
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
   }
+  .tab:hover { border-color: var(--wire); color: var(--wire); }
+  .tab.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+  ul.archive { list-style: none; margin: 30px 0 0; padding: 0; }
+  ul.archive li.divider {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--wire);
+    padding: 30px 0 10px;
+    margin-bottom: 2px;
+    border-bottom: 2px dashed var(--wire);
+  }
+  ul.archive li.divider:first-child { padding-top: 0; }
+  ul.archive li.row { border-bottom: 1px solid var(--rule); }
+  ul.archive li.row a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 18px;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 13px 0;
+  }
+  ul.archive li.row a:hover .row-title { color: var(--wire); }
+  .row-title { font-size: 0.98rem; flex: 1 1 auto; min-width: 0; }
   .row-meta {
     display: flex;
+    gap: 10px;
     align-items: baseline;
-    gap: 6px;
     flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
     white-space: nowrap;
-    font-size: 0.76rem;
   }
-  .row-client { color: var(--muted); }
-  .row-sep { color: var(--border); }
+  .row-client { color: var(--ink-soft); }
   .row-type {
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.68rem;
+    color: var(--wire);
     font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
-  ul.archive.type-filtered .row-sep,
-  ul.archive.type-filtered .row-type {
-    display: none;
-  }
-  @media (max-width: 560px) {
-    .row-title {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .row-client, .row-sep { display: none; }
-  }
-  @media (max-width: 460px) {
-    .row-thumb { display: none; }
+  ul.archive.filtered .row-type,
+  ul.archive.filtered .row-sep { display: none; }
+  .row-sep { color: var(--rule); }
+  @media (max-width: 600px) {
+    .row-client { display: none; }
+    .row-sep { display: none; }
   }
 
   #empty-state {
-    color: var(--muted);
+    color: var(--ink-faint);
     font-size: 0.9rem;
     padding: 32px 0;
     text-align: center;
+    font-family: var(--mono);
   }
 
   footer {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 40px 24px 72px;
-    color: var(--muted);
-    font-size: 0.82rem;
-    border-top: 1px solid var(--border);
+    background-color: var(--block);
+    background-image: radial-gradient(rgba(244, 246, 249, 0.16) 1.2px, transparent 1.6px);
+    background-size: 16px 16px;
+    color: var(--block-ink-soft);
+    padding: 32px 0;
+    font-family: var(--mono);
+    font-size: 0.76rem;
   }
-  footer .name {
-    font-family: var(--serif);
-    font-style: italic;
-    color: var(--fg);
-  }
-  footer a {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    color: inherit;
-    text-decoration-color: var(--border);
-  }
-  footer a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  footer .name { color: var(--block-ink); }
+  footer a { color: var(--block-ink-soft); text-decoration: underline; text-decoration-color: rgba(244, 246, 249, 0.25); }
+  footer a:hover { color: var(--block-accent); text-decoration-color: var(--block-accent); }
 </style>
 </head>
 <body>
 
-<div class="bg-parallax"></div>
+<div class="utility-bar">
+  <div class="wrap">
+    <span>peterimbong.com</span>
+    <nav>
+      <a href="#featured">Featured</a>
+      <a href="#archive">Archive</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
 
-<img class="cover-banner" src="assets/header-cover.svg" alt="" role="presentation">
-
-<header id="top">
-  <h1>Peter Imbong</h1>
-  <p class="role">Content Strategist · Editor · Copywriter</p>
-  <p class="bio">A collection of journalism, brand storytelling, and copywriting written for newsrooms, agencies, and companies across tech, wellness, telecom, and lifestyle.</p>
-  <div class="links">
-    <a href="mailto:peter@peterimbong.com"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M3 5.5l7 6 7-6"/></svg>peter@peterimbong.com</a>
-    <a href="https://linkedin.com/in/peterimbong" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6.5" cy="6.7" r="1.1"/><path d="M5.6 8.9h1.8v6.2H5.6z"/><path d="M9.3 8.9h1.75v.95h.03c.24-.46.85-.95 1.75-.95 1.87 0 2.22 1.23 2.22 2.83v3.4h-1.8v-3.02c0-.72-.02-1.65-1-1.65-1 0-1.15.78-1.15 1.6v3.07h-1.8z"/></svg>LinkedIn</a>
+<header class="masthead" id="top">
+  <div class="wrap">
+    <h1>Peter Imbong</h1>
+    <p class="role">Content Strategist — Editor — Copywriter</p>
+    <p class="bio">A collection of journalism, brand storytelling, and copywriting written for newsrooms, agencies, and companies across tech, wellness, telecom, and lifestyle.</p>
+    <div class="contact">
+      <a href="mailto:peter@peterimbong.com">peter@peterimbong.com</a>
+      <a href="https://linkedin.com/in/peterimbong" target="_blank" rel="noopener">linkedin.com/in/peterimbong</a>
+    </div>
   </div>
 </header>
 
-<div class="name-bar">
-  <div class="name-bar-inner">
-    <a href="#top">Peter Imbong</a>
-    <span class="name-bar-role">Content Strategist · Editor · Copywriter</span>
+<div class="clients-strip">
+  <div class="wrap">
+    <span class="clients-label">Selected Clients</span>
+    <div class="clients-marks">
+      <span class="client-mark">WIRED UK</span>
+      <span class="client-mark">Rappler</span>
+      <span class="client-mark">Xiaomi</span>
+      <span class="client-mark">Singtel</span>
+      <span class="client-mark">ViewQwest</span>
+      <span class="client-mark">Bondee</span>
+      <span class="client-mark">Eleven International</span>
+      <span class="client-mark">BetterAlt</span>
+      <span class="client-mark">TradeSquare</span>
+      <span class="client-mark">Siemens</span>
+    </div>
   </div>
 </div>
 
 <main>
 
-  <section class="clients-section" aria-labelledby="clients-heading">
-    <h2 id="clients-heading" class="section-heading">Selected Clients</h2>
-    <p class="section-sub">Newsrooms, agencies, and brands across tech, wellness, telecom, and lifestyle. Click a client to see their work below.</p>
-    <div class="client-grid" id="client-grid">
-      <button type="button" class="client-card" data-client="WIRED UK">
-        <span class="client-name">WIRED UK</span>
-        <span class="client-industry">Tech Media</span>
-        <span class="client-desc">Global tech, science, and culture magazine.</span>
-        <span class="client-count"></span>
-      </button>
-      <button type="button" class="client-card" data-client="Rappler">
-        <span class="client-name">Rappler</span>
-        <span class="client-industry">Journalism</span>
-        <span class="client-desc">Leading Philippine digital news and citizen journalism platform.</span>
-        <span class="client-count"></span>
-      </button>
-      <button type="button" class="client-card" data-client="Xiaomi">
-        <span class="client-name">Xiaomi</span>
-        <span class="client-industry">Consumer Tech</span>
-        <span class="client-desc">Chinese consumer electronics giant spanning phones, EVs, and smart homes.</span>
-        <span class="client-count"></span>
-      </button>
-      <button type="button" class="client-card" data-client="Singtel">
-        <span class="client-name">Singtel</span>
-        <span class="client-industry">Telecom</span>
-        <span class="client-desc">Singapore's largest telecommunications and technology services group.</span>
-        <span class="client-count"></span>
-      </button>
-      <button type="button" class="client-card" data-client="ViewQwest">
-        <span class="client-name">ViewQwest</span>
-        <span class="client-industry">Broadband ISP</span>
-        <span class="client-desc">Singapore-based broadband and connectivity provider.</span>
-        <span class="client-count"></span>
-      </button>
-      <button type="button" class="client-card" data-client="Bondee">
-        <span class="client-name">Bondee</span>
-        <span class="client-industry">Social Tech</span>
-        <span class="client-desc">Avatar-based social app from Singapore's Metadream.</span>
-        <span class="client-count"></span>
-      </button>
-      <button type="button" class="client-card" data-client="Eleven International">
-        <span class="client-name">Eleven International</span>
-        <span class="client-industry">PR &amp; Comms</span>
-        <span class="client-desc">Cross-border tech PR agency spanning the US, UK, China, and SEA.</span>
-        <span class="client-count"></span>
-      </button>
-      <button type="button" class="client-card" data-client="BetterAlt">
-        <span class="client-name">BetterAlt</span>
-        <span class="client-industry">Wellness</span>
-        <span class="client-desc">Mumbai-founded wellness brand blending Ayurveda with modern science.</span>
-        <span class="client-count"></span>
-      </button>
-      <button type="button" class="client-card" data-client="TradeSquare">
-        <span class="client-name">TradeSquare</span>
-        <span class="client-industry">B2B Trade</span>
-        <span class="client-desc">Australia's largest B2B wholesale marketplace for local SMEs.</span>
-        <span class="client-count"></span>
-      </button>
-      <button type="button" class="client-card" data-client="Siemens">
-        <span class="client-name">Siemens</span>
-        <span class="client-industry">Engineering</span>
-        <span class="client-desc">Global engineering and technology company spanning industry and home appliances.</span>
-        <span class="client-count"></span>
-      </button>
+  <section class="section" id="featured">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Featured Works</h2>
+        <span class="note">5 of 82 pieces, in full</span>
+      </div>
+
+      <a class="lead-card" href="https://www.wired.com/story/dengue-vaccine-philippines-outbreak/" target="_blank" rel="noopener">
+        <span class="eyebrow">WIRED UK · Journalism</span>
+        <h3>What happens when vaccine scepticism takes over? Look to the Philippines</h3>
+        <p>A feature on the Philippines' Dengvaxia scandal and how it fractured public trust in vaccines nationwide, reported and written for WIRED's UK edition.</p>
+        <span class="read-link">Read the story</span>
+      </a>
+
+      <div class="card-grid">
+        <a class="card" href="assets/product-guides/siemens/connected-kitchen.pdf" target="_blank" rel="noopener">
+          <span class="eyebrow">Siemens · Product Guides</span>
+          <h3>A 14-guide instructional series for a global engineering brand</h3>
+          <p>Consumer-facing product and cooking guides for Siemens home appliances, spanning connected kitchens, food storage, and sustainable cooking.</p>
+          <span class="read-link">Read the Connected Kitchen guide</span>
+        </a>
+        <a class="card" href="https://www.11.international/study-case/vidu" target="_blank" rel="noopener">
+          <span class="eyebrow">Eleven International · Case Studies</span>
+          <h3>Six client case studies for a cross-border tech PR agency</h3>
+          <p>Covering Web3 wallets, generative AI video, AR wearables, and wellness, written for Eleven International's roster of tech clients, including Vidu, UniPass, and Brilliant Labs.</p>
+          <span class="read-link">Read the Vidu case study</span>
+        </a>
+        <a class="card" href="https://drive.google.com/file/d/1MBX_U4okFMRi_OJWoRGz1L5UQBJd1FCq/view?usp=sharing" target="_blank" rel="noopener">
+          <span class="eyebrow">ViewQwest · Landing Page + Blogs</span>
+          <h3>An ongoing content program for a broadband ISP</h3>
+          <p>Nine-plus educational and product blog posts, plus the core residential broadband landing page copy, for Singapore ISP ViewQwest.</p>
+          <span class="read-link">Read the landing page</span>
+        </a>
+        <a class="card" href="https://www.mi.com/global/discover/article?id=3768" target="_blank" rel="noopener">
+          <span class="eyebrow">Xiaomi · Press Release</span>
+          <h3>Global launch copy for Xiaomi's SU7 Ultra sedan</h3>
+          <p>Press release copy for the unveiling of Xiaomi's flagship performance EV, published across Xiaomi's international newsroom.</p>
+          <span class="read-link">Read the release</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <div class="filters">
-    <h2 class="filter-heading">Browse the Archive</h2>
-    <p class="filter-label"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M4.5 8h7M7 12h2"/></svg>Click a category below to filter</p>
-    <div class="chip-row" id="type-chips" role="group" aria-label="Filter by content type">
-      <button class="chip active" data-filter-type="all" aria-pressed="true">All</button>
-      <button class="chip" data-filter-type="journalism" aria-pressed="false">Journalism</button>
-      <button class="chip" data-filter-type="blogs" aria-pressed="false">Blogs</button>
-      <button class="chip" data-filter-type="press-releases" aria-pressed="false">Press</button>
-      <button class="chip" data-filter-type="case-studies" aria-pressed="false">Case Studies</button>
-      <button class="chip" data-filter-type="product-copy" aria-pressed="false">Product Copy</button>
-      <button class="chip" data-filter-type="landing-pages" aria-pressed="false">Landing Pages</button>
-      <button class="chip" data-filter-type="reports" aria-pressed="false">Reports</button>
-      <button class="chip" data-filter-type="edms" aria-pressed="false">Email</button>
-      <button class="chip" data-filter-type="product-guides" aria-pressed="false">Guides</button>
+  <section class="section" id="archive">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Full Archive</h2>
+        <span class="note" id="result-count">82 pieces</span>
+      </div>
+
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="journalism">Journalism</button>
+        <button class="tab" data-filter="blogs">Blogs</button>
+        <button class="tab" data-filter="press-releases">Press</button>
+        <button class="tab" data-filter="case-studies">Case Studies</button>
+        <button class="tab" data-filter="product-copy">Product Copy</button>
+        <button class="tab" data-filter="landing-pages">Landing Pages</button>
+        <button class="tab" data-filter="reports">Reports</button>
+        <button class="tab" data-filter="edms">Email</button>
+        <button class="tab" data-filter="product-guides">Guides</button>
+      </div>
+
+      <ul class="archive" id="archive-list">
+
+        <li class="divider" data-type="journalism">Journalism</li>
+        <li class="row" data-type="journalism"><a href="https://www.wired.com/story/dengue-vaccine-philippines-outbreak/" target="_blank" rel="noopener"><span class="row-title">What happens when vaccine scepticism takes over? Look to the Philippines</span><span class="row-meta"><span class="row-client">WIRED UK</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://drive.google.com/file/d/1BHgRBgrprviN_WBDEKQWFB4JzXRlac8W/view" target="_blank" rel="noopener"><span class="row-title">Ocean's 2018: Is Europe's Cybersecurity Keeping up with the Rise of Financial Cybercrime?</span><span class="row-meta"><span class="row-client">Publish.org</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://web.archive.org/web/20180716170044/https://asia.nikkei.com/economy/philippines-tries-to-reignite-production" target="_blank" rel="noopener"><span class="row-title">Philippines tries to reignite production</span><span class="row-meta"><span class="row-client">Nikkei Asia</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://www.rappler.com/life-and-style/39512-5th-generation-aboitiz-leaders/" target="_blank" rel="noopener"><span class="row-title">Meet the 5th generation of Aboitiz leaders</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://drive.google.com/file/d/1ecaju5zDmfHxEXROK6yQHh9oTn40tQb0/view" target="_blank" rel="noopener"><span class="row-title">The Price of Beauty</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://drive.google.com/file/d/1zcxQJ4q6jhOUrGXqCEIsU0K7kz9hV0pt/view" target="_blank" rel="noopener"><span class="row-title">Pamora Farm: Land of the Free</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://drive.google.com/file/d/1qlNqJLicQBaGcd4OckbYypZ4yvWMRHc8/view" target="_blank" rel="noopener"><span class="row-title">The House the 'M' Built</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://drive.google.com/file/d/1iCjasBE7ypqy0C9DYJz6szJIxzCPqYsb/view" target="_blank" rel="noopener"><span class="row-title">A Tale of Two Chickens</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://drive.google.com/file/d/142kCvyfjRUYWOzsHo3Qotj2lAyr-ZqQJ/view" target="_blank" rel="noopener"><span class="row-title">The Cafe Scene</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://web.archive.org/web/20210411220403/https://fnbreport.ph/features/how-this-family-run-concept-transitioned-from-a-bazaar-stall-to-a-full-scale-restaurant-peteri-20190128/" target="_blank" rel="noopener"><span class="row-title">How this family-run concept transitioned from a bazaar stall to a full-scale restaurant</span><span class="row-meta"><span class="row-client">F&amp;B Report</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://web.archive.org/web/20210325212001/https://fnbreport.ph/features/nino-laus-masters-the-art-of-foraging-peteri-20190318/" target="_blank" rel="noopener"><span class="row-title">With Agimat, Niño Laus masters the art of foraging</span><span class="row-meta"><span class="row-client">F&amp;B Report</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://www.rappler.com/entertainment/music/47747-capital-cities-unabashedly-cheery/" target="_blank" rel="noopener"><span class="row-title">Capital Cities: Unabashedly Cheery</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://drive.google.com/open?id=1ytp9vBNujYqW1ZvhrvgPZOKZpCD05uQi&amp;usp=drive_fs" target="_blank" rel="noopener"><span class="row-title">A coffee journey: From the farm to your cup</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+        <li class="row" data-type="journalism"><a href="https://drive.google.com/open?id=1SUUe95KscC5ixuDgBtGj9cbXnmaD4RxA&amp;usp=drive_fs" target="_blank" rel="noopener"><span class="row-title">Dr Michio Kaku: Philippines poised to leap into the future</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
+
+        <li class="divider" data-type="blogs">Blogs &amp; Thought Leadership</li>
+        <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/reasons-why-having-a-fast-broadband-connection-is-essential/" target="_blank" rel="noopener"><span class="row-title">Reasons Why Having A Fast Broadband Connection Is Essential</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/home-cybersecurity-how-to-protect-your-family-from-cyber-threats/" target="_blank" rel="noopener"><span class="row-title">Home Cybersecurity: How To Protect Your Family From Cyber Threats</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/wifi-6-explained-speed-benefits-and-why-its-time-to-upgrade/" target="_blank" rel="noopener"><span class="row-title">WiFi 6 Explained: Speed, Benefits, and Why It's Time to Upgrade</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/you-are-and-what-to-consider-when-selecting-a-wifi-plan/" target="_blank" rel="noopener"><span class="row-title">Need A Change? Here's Your Guide To Choosing A New Broadband Plan</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/how-to-create-the-optimal-gaming-room-setup/" target="_blank" rel="noopener"><span class="row-title">How To Create The Optimal Gaming Room Setup</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/heres-how-to-understand-your-internet-speed-test-reading/" target="_blank" rel="noopener"><span class="row-title">Here's How To Understand Your Internet Speed Test Reading</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/securenet-report-october/" target="_blank" rel="noopener"><span class="row-title">SecureNet Cyber Threat Report | October 2021</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/how-to-build-a-smart-home-the-smart-way/" target="_blank" rel="noopener"><span class="row-title">How To Build A Smart Home The Smart Way</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/take-your-hybrid-work-from-home-to-the-next-level-for-peak-productivity/" target="_blank" rel="noopener"><span class="row-title">Take Your Hybrid Work-From-Home To The Next Level For Peak Productivity</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://bondee.com/newsInfo/16" target="_blank" rel="noopener"><span class="row-title">How Our Trust &amp; Safety Advisory Board is Navigating the Future on Bondee</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://bondee.com/newsInfo/15" target="_blank" rel="noopener"><span class="row-title">From Avatars to Advocates: How 2 Bondee Users Turned Their Online Connection into a Real-World Mission for Disability Inclusion</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://bondee.com/newsInfo/10" target="_blank" rel="noopener"><span class="row-title">Forging a Safer Future: Introducing the Bondee Trust and Safety Advisory Board</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://bondee.com/newsInfo/12" target="_blank" rel="noopener"><span class="row-title">Building Tomorrow's Future Innovators through the Bondee AI Summer Camp</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://bondee.com/newsInfo/7" target="_blank" rel="noopener"><span class="row-title">Blending Digital Innovation with Real-World Experiences: Creating Connections Through Offline Activities in Japan</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://www.11.international/post/advice-on-social-media-strategy" target="_blank" rel="noopener"><span class="row-title">Insights on Social Media Strategy</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://www.11.international/post/welcome-to-our-new-look-eleven-international-your-trusted-advisor-for-cross-border-communications" target="_blank" rel="noopener"><span class="row-title">Welcome to Our New Look: Eleven International — Your Trusted Advisor for Cross-Border Communications</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://www.11.international/post/truly-eleven-international-the-diversity-that-shapes-us" target="_blank" rel="noopener"><span class="row-title">Truly Eleven 'International'; The diversity that shapes us</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/how-the-attention-economy-of-web-2-0-failed-us-and-the-promise-web-3-0-holds-f0fda221b87a" target="_blank" rel="noopener"><span class="row-title">How the 'Attention Economy' of Web 2.0 failed us, and the promise Web 3.0 holds</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/the-age-of-outrage-how-reaction-culture-is-damaging-discourse-8f534f87d0cd" target="_blank" rel="noopener"><span class="row-title">The Age of Outrage: How Reaction Culture is Damaging Discourse</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/tech-companies-cant-ignore-online-harassment-of-women-any-longer-7593d3f439f2" target="_blank" rel="noopener"><span class="row-title">Tech Companies Can't Ignore Online Harassment of Women Any Longer</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/the-secret-to-being-more-creative-is-to-not-be-original-bf92a12696f4" target="_blank" rel="noopener"><span class="row-title">The secret to being more creative, is to not be original</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/understanding-the-role-of-imagined-communities-in-online-spaces-3f736f576ad9" target="_blank" rel="noopener"><span class="row-title">Understanding the Role of Imagined Communities in Online Spaces</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/reclaiming-focus-the-necessity-of-deep-reading-d47fd2c741ea" target="_blank" rel="noopener"><span class="row-title">Reclaiming Focus: The Necessity of Deep Reading</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/can-technology-reclaim-our-diminishing-reading-time-75b183fd2079" target="_blank" rel="noopener"><span class="row-title">Can technology reclaim our diminishing reading time?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://medium.com/blockchain-biz/recommendation-media-is-here-but-is-it-what-we-need-a5564609e03c" target="_blank" rel="noopener"><span class="row-title">What's next after social media's failure to its users?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/whats-next-in-media-after-the-clickbait-era-e841d89fea73" target="_blank" rel="noopener"><span class="row-title">What's next in media after the clickbait era?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+
+        <li class="divider" data-type="press-releases">Press Releases</li>
+        <li class="row" data-type="press-releases"><a href="https://www.mi.com/global/discover/article?id=3768" target="_blank" rel="noopener"><span class="row-title">Xiaomi SU7 Ultra Unveiled: The Ultimate Performance Technology Sedan</span><span class="row-meta"><span class="row-client">Xiaomi</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
+        <li class="row" data-type="press-releases"><a href="https://www.mi.com/global/discover/article?id=5467" target="_blank" rel="noopener"><span class="row-title">Xiaomi Unveils Next-Gen AIoT Lineup Spanning Smart Home, Wearables, and Entertainment</span><span class="row-meta"><span class="row-client">Xiaomi</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
+        <li class="row" data-type="press-releases"><a href="https://www.mi.com/global/discover/article?id=5463" target="_blank" rel="noopener"><span class="row-title">Xiaomi Unveils Xiaomi 15T Series Blending Outstanding Optics with Cutting-edge Technology and Flagship Design</span><span class="row-meta"><span class="row-client">Xiaomi</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
+        <li class="row" data-type="press-releases"><a href="https://drive.google.com/file/d/1dWmODepNAEi4nkb0b6vhMAMAzuvqrpxv/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">LOST MARY unveils strategic business plans as it enters Malaysia, pledging regulatory compliance</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
+        <li class="row" data-type="press-releases"><a href="https://drive.google.com/file/d/1QUD5thT-xIKEeTQugb57mCzRQ__xZAeT/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">Video-to-Music Composition Tool 'TemPolor' Launches to Challenge Sora AI and Suno</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
+
+        <li class="divider" data-type="case-studies">Case Studies</li>
+        <li class="row" data-type="case-studies"><a href="https://www.11.international/study-case/unipass" target="_blank" rel="noopener"><span class="row-title">UniPass: A self-custodial Web3 wallet app developed by Account Labs</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
+        <li class="row" data-type="case-studies"><a href="https://www.11.international/study-case/betteralt" target="_blank" rel="noopener"><span class="row-title">BetterAlt: A Mumbai-based wellness company combining traditional Ayurvedic wisdom with modern science</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
+        <li class="row" data-type="case-studies"><a href="https://www.11.international/study-case/lightspeed-studios" target="_blank" rel="noopener"><span class="row-title">LightSpeed Studios: One of the world's leading global game developers</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
+        <li class="row" data-type="case-studies"><a href="https://www.11.international/study-case/vidu" target="_blank" rel="noopener"><span class="row-title">Vidu: Leading generative AI video platform known for its pioneering Multi-Entity Consistency feature</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
+        <li class="row" data-type="case-studies"><a href="https://www.11.international/study-case/brilliant-labs" target="_blank" rel="noopener"><span class="row-title">Brilliant Labs: Wearable tech company redefining how humans interact with technology through AI-powered glasses</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
+        <li class="row" data-type="case-studies"><a href="https://www.11.international/study-case/red-door-digital" target="_blank" rel="noopener"><span class="row-title">Red Door Digital: Gaming studio creating AAA-quality Web3 video games</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
+
+        <li class="divider" data-type="product-copy">Product Copy &amp; Articles</li>
+        <li class="row" data-type="product-copy"><a href="https://www.womansworld.com/contributors/cut-through-the-wellness-clutter-with-this-ancient-remedy-for-ultimate-health" target="_blank" rel="noopener"><span class="row-title">Cut Through the Wellness Clutter With This Ancient Remedy for Ultimate Health</span><span class="row-meta"><span class="row-client">BetterAlt</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
+        <li class="row" data-type="product-copy"><a href="https://radaronline.com/p/the-future-of-anti-aging-means-going-back-to-an-ancient-remedy/" target="_blank" rel="noopener"><span class="row-title">The Future of Anti-aging Means Going Back to an Ancient Remedy</span><span class="row-meta"><span class="row-client">BetterAlt</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
+        <li class="row" data-type="product-copy"><a href="https://okmagazine.com/p/robot-vacuum-must-have-addition-modern-homes/" target="_blank" rel="noopener"><span class="row-title">A Smarter Way to Clean: Why a Robot Vacuum Is a Must-Have Addition to Modern Homes</span><span class="row-meta"><span class="row-client">Yeedi</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
+        <li class="row" data-type="product-copy"><a href="https://www.thebraggingmommy.com/why-the-right-baby-carrier-can-make-postpartum-life-easier/" target="_blank" rel="noopener"><span class="row-title">Why the Right Baby Carrier Can Make Postpartum Life Easier</span><span class="row-meta"><span class="row-client">Bc Babycare</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
+        <li class="row" data-type="product-copy"><a href="https://goodmenproject.com/parenting/how-public-babywearing-challenges-old-notions-of-manhood/" target="_blank" rel="noopener"><span class="row-title">How Public Babywearing Challenges Old Notions of Manhood</span><span class="row-meta"><span class="row-client">Bc Babycare</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
+
+        <li class="divider" data-type="landing-pages">Landing Pages &amp; UX Copy</li>
+        <li class="row" data-type="landing-pages"><a href="https://drive.google.com/file/d/1MBX_U4okFMRi_OJWoRGz1L5UQBJd1FCq/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">ViewQwest Residential Broadband</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Landing Page</span></span></a></li>
+        <li class="row" data-type="landing-pages"><a href="https://bondee.com/safety/safetyCenter" target="_blank" rel="noopener"><span class="row-title">Bondee Safety Hub</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Landing Page</span></span></a></li>
+
+        <li class="divider" data-type="reports">Infographics &amp; Reports</li>
+        <li class="row" data-type="reports"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/solution-brief-from-telco-to-techco.pdf" target="_blank" rel="noopener"><span class="row-title">From telco to techco: Enabling the future of digital transformation</span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
+        <li class="row" data-type="reports"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/streamline-hybrid-hr-process-with-ease.pdf" target="_blank" rel="noopener"><span class="row-title">From Onboarding to Team Engagement: Streamline Hybrid HR Processes With Ease</span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
+        <li class="row" data-type="reports"><a href="https://cdn2.singteldigital.com/content/dam/singtel/business/sb/articles/strategies-to-upskills-diverse-workforce.pdf" target="_blank" rel="noopener"><span class="row-title">Tech-driven inclusivity: strategies to upskill a diverse workforce</span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
+        <li class="row" data-type="reports"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/infographic-next-gen-security-for-the-remote-workforce.pdf" target="_blank" rel="noopener"><span class="row-title">Next-gen security for the remote workplace</span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
+
+        <li class="divider" data-type="edms">Email Marketing</li>
+        <li class="row" data-type="edms"><a href="assets/edms/tradesquare-welcome-summer-stock.png" target="_blank" rel="noopener"><span class="row-title">Welcome to the Best Place to Buy Your Summer Stock</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
+        <li class="row" data-type="edms"><a href="assets/edms/tradesquare-sizzling-summer-steals.png" target="_blank" rel="noopener"><span class="row-title">Sizzling Summer Steals: Buy Australian Wholesale</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
+        <li class="row" data-type="edms"><a href="assets/edms/tradesquare-november-update.png" target="_blank" rel="noopener"><span class="row-title">November TradeSquare Update</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
+        <li class="row" data-type="edms"><a href="assets/edms/tradesquare-koala-launch.png" target="_blank" rel="noopener"><span class="row-title">Koala is Now on TradeSquare: Launch Campaign</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
+        <li class="row" data-type="edms"><a href="assets/edms/tradesquare-platform-guide.png" target="_blank" rel="noopener"><span class="row-title">Discover Australian Wholesale: Platform Guide</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
+        <li class="row" data-type="edms"><a href="assets/edms/tradesquare-advent-calendar.png" target="_blank" rel="noopener"><span class="row-title">'Tis the Season: TradeSquare Advent Calendar</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
+
+        <li class="divider" data-type="product-guides">Product Guides</li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/connected-kitchen.pdf" target="_blank" rel="noopener"><span class="row-title">Connected Kitchen</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/get-to-know-your-oven.pdf" target="_blank" rel="noopener"><span class="row-title">Get to Know Your Oven</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/get-to-know-your-hob-and-hood.pdf" target="_blank" rel="noopener"><span class="row-title">Get to Know Your Hob &amp; Hood</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/get-to-know-your-fridge-and-freezer.pdf" target="_blank" rel="noopener"><span class="row-title">Get to Know Your Fridge &amp; Freezer</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/coffee-expertise.pdf" target="_blank" rel="noopener"><span class="row-title">Coffee Expertise</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/discover-meat-free-meals.pdf" target="_blank" rel="noopener"><span class="row-title">Discover Meat Free Meals</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/how-to-prepare-brunch.pdf" target="_blank" rel="noopener"><span class="row-title">How to Prepare Brunch</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/how-to-prepare-fish.pdf" target="_blank" rel="noopener"><span class="row-title">How to Prepare Fish</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/how-to-prepare-healthy-dishes.pdf" target="_blank" rel="noopener"><span class="row-title">How to Prepare Healthy Dishes</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/making-healthy-food-choices.pdf" target="_blank" rel="noopener"><span class="row-title">Making Healthy Food Choices</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/how-to-store-food-properly.pdf" target="_blank" rel="noopener"><span class="row-title">How to Store Food Properly</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/how-to-reduce-food-waste-at-home.pdf" target="_blank" rel="noopener"><span class="row-title">How to Reduce Food Waste at Home</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/how-to-shop-sustainably.pdf" target="_blank" rel="noopener"><span class="row-title">How to Shop Sustainably</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+        <li class="row" data-type="product-guides"><a href="assets/product-guides/siemens/tips-hosting-dinner-party.pdf" target="_blank" rel="noopener"><span class="row-title">Tips for Hosting a Dinner Party</span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
+
+      </ul>
+
+      <p id="empty-state" hidden>No pieces match this filter.</p>
     </div>
-    <div class="filter-secondary">
-      <span class="client-filter-badge" id="client-filter-badge"><span id="client-filter-name"></span><button type="button" id="client-filter-clear" aria-label="Clear client filter">&times;</button></span>
-      <span class="result-count" id="result-count" aria-live="polite"></span>
-    </div>
-  </div>
-
-  <ul class="archive" id="archive-list">
-
-    <li class="type-divider" data-type="journalism">Journalism</li>
-    <li data-type="journalism" data-client="WIRED UK"><a href="https://www.wired.com/story/dengue-vaccine-philippines-outbreak/" target="_blank" rel="noopener"><span class="row-title">What happens when vaccine scepticism takes over? Look to the Philippines</span><span class="row-meta"><span class="row-client">WIRED UK</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Publish.org"><a href="https://drive.google.com/file/d/1BHgRBgrprviN_WBDEKQWFB4JzXRlac8W/view" target="_blank" rel="noopener"><span class="row-title">Ocean's 2018: Is Europe's Cybersecurity Keeping up with the Rise of Financial Cybercrime?</span><span class="row-meta"><span class="row-client">Publish.org</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Nikkei Asia"><a href="https://web.archive.org/web/20180716170044/https://asia.nikkei.com/economy/philippines-tries-to-reignite-production" target="_blank" rel="noopener"><span class="row-title">Philippines tries to reignite production</span><span class="row-meta"><span class="row-client">Nikkei Asia</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Rappler"><a href="https://www.rappler.com/life-and-style/39512-5th-generation-aboitiz-leaders/" target="_blank" rel="noopener"><span class="row-title">Meet the 5th generation of Aboitiz leaders</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Entrepreneur"><a href="https://drive.google.com/file/d/1ecaju5zDmfHxEXROK6yQHh9oTn40tQb0/view" target="_blank" rel="noopener"><span class="row-title">The Price of Beauty</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Entrepreneur"><a href="https://drive.google.com/file/d/1zcxQJ4q6jhOUrGXqCEIsU0K7kz9hV0pt/view" target="_blank" rel="noopener"><span class="row-title">Pamora Farm: Land of the Free</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Entrepreneur"><a href="https://drive.google.com/file/d/1qlNqJLicQBaGcd4OckbYypZ4yvWMRHc8/view" target="_blank" rel="noopener"><span class="row-title">The House the 'M' Built</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Entrepreneur"><a href="https://drive.google.com/file/d/1iCjasBE7ypqy0C9DYJz6szJIxzCPqYsb/view" target="_blank" rel="noopener"><span class="row-title">A Tale of Two Chickens</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Entrepreneur"><a href="https://drive.google.com/file/d/142kCvyfjRUYWOzsHo3Qotj2lAyr-ZqQJ/view" target="_blank" rel="noopener"><span class="row-title">The Cafe Scene</span><span class="row-meta"><span class="row-client">Entrepreneur</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="F&amp;B Report"><a href="https://web.archive.org/web/20210411220403/https://fnbreport.ph/features/how-this-family-run-concept-transitioned-from-a-bazaar-stall-to-a-full-scale-restaurant-peteri-20190128/" target="_blank" rel="noopener"><span class="row-title">How this family-run concept transitioned from a bazaar stall to a full-scale restaurant</span><span class="row-meta"><span class="row-client">F&amp;B Report</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="F&amp;B Report"><a href="https://web.archive.org/web/20210325212001/https://fnbreport.ph/features/nino-laus-masters-the-art-of-foraging-peteri-20190318/" target="_blank" rel="noopener"><span class="row-title">With Agimat, Niño Laus masters the art of foraging</span><span class="row-meta"><span class="row-client">F&amp;B Report</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Rappler"><a href="https://www.rappler.com/entertainment/music/47747-capital-cities-unabashedly-cheery/" target="_blank" rel="noopener"><span class="row-title">Capital Cities: Unabashedly Cheery</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Rappler"><a href="https://drive.google.com/open?id=1ytp9vBNujYqW1ZvhrvgPZOKZpCD05uQi&amp;usp=drive_fs" target="_blank" rel="noopener"><span class="row-title">A coffee journey: From the farm to your cup</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-    <li data-type="journalism" data-client="Rappler"><a href="https://drive.google.com/open?id=1SUUe95KscC5ixuDgBtGj9cbXnmaD4RxA&amp;usp=drive_fs" target="_blank" rel="noopener"><span class="row-title">Dr Michio Kaku: Philippines poised to leap into the future</span><span class="row-meta"><span class="row-client">Rappler</span><span class="row-sep">·</span><span class="row-type">Journalism</span></span></a></li>
-
-    <li class="type-divider" data-type="blogs">Blogs &amp; Thought Leadership</li>
-    <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/reasons-why-having-a-fast-broadband-connection-is-essential/" target="_blank" rel="noopener"><span class="row-title">Reasons Why Having A Fast Broadband Connection Is Essential</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/home-cybersecurity-how-to-protect-your-family-from-cyber-threats/" target="_blank" rel="noopener"><span class="row-title">Home Cybersecurity: How To Protect Your Family From Cyber Threats</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/wifi-6-explained-speed-benefits-and-why-its-time-to-upgrade/" target="_blank" rel="noopener"><span class="row-title">WiFi 6 Explained: Speed, Benefits, and Why It's Time to Upgrade</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/you-are-and-what-to-consider-when-selecting-a-wifi-plan/" target="_blank" rel="noopener"><span class="row-title">Need A Change? Here's Your Guide To Choosing A New Broadband Plan</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/how-to-create-the-optimal-gaming-room-setup/" target="_blank" rel="noopener"><span class="row-title">How To Create The Optimal Gaming Room Setup</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/heres-how-to-understand-your-internet-speed-test-reading/" target="_blank" rel="noopener"><span class="row-title">Here's How To Understand Your Internet Speed Test Reading</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/securenet-report-october/" target="_blank" rel="noopener"><span class="row-title">SecureNet Cyber Threat Report | October 2021</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/how-to-build-a-smart-home-the-smart-way/" target="_blank" rel="noopener"><span class="row-title">How To Build A Smart Home The Smart Way</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="ViewQwest"><a href="https://viewqwest.com/sg/residential/blog/take-your-hybrid-work-from-home-to-the-next-level-for-peak-productivity/" target="_blank" rel="noopener"><span class="row-title">Take Your Hybrid Work-From-Home To The Next Level For Peak Productivity</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-
-    <li data-type="blogs" data-client="Bondee"><a href="https://bondee.com/newsInfo/16" target="_blank" rel="noopener"><span class="row-title">How Our Trust &amp; Safety Advisory Board is Navigating the Future on Bondee</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="Bondee"><a href="https://bondee.com/newsInfo/15" target="_blank" rel="noopener"><span class="row-title">From Avatars to Advocates: How 2 Bondee Users Turned Their Online Connection into a Real-World Mission for Disability Inclusion</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="Bondee"><a href="https://bondee.com/newsInfo/10" target="_blank" rel="noopener"><span class="row-title">Forging a Safer Future: Introducing the Bondee Trust and Safety Advisory Board</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="Bondee"><a href="https://bondee.com/newsInfo/12" target="_blank" rel="noopener"><span class="row-title">Building Tomorrow's Future Innovators through the Bondee AI Summer Camp</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="Bondee"><a href="https://bondee.com/newsInfo/7" target="_blank" rel="noopener"><span class="row-title">Blending Digital Innovation with Real-World Experiences: Creating Connections Through Offline Activities in Japan</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-
-    <li data-type="blogs" data-client="Eleven International"><a href="https://www.11.international/post/advice-on-social-media-strategy" target="_blank" rel="noopener"><span class="row-title">Insights on Social Media Strategy</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="Eleven International"><a href="https://www.11.international/post/welcome-to-our-new-look-eleven-international-your-trusted-advisor-for-cross-border-communications" target="_blank" rel="noopener"><span class="row-title">Welcome to Our New Look: Eleven International — Your Trusted Advisor for Cross-Border Communications</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="Eleven International"><a href="https://www.11.international/post/truly-eleven-international-the-diversity-that-shapes-us" target="_blank" rel="noopener"><span class="row-title">Truly Eleven 'International'; The diversity that shapes us</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-
-    <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/@t2.world/how-the-attention-economy-of-web-2-0-failed-us-and-the-promise-web-3-0-holds-f0fda221b87a" target="_blank" rel="noopener"><span class="row-title">How the 'Attention Economy' of Web 2.0 failed us, and the promise Web 3.0 holds</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/@t2.world/the-age-of-outrage-how-reaction-culture-is-damaging-discourse-8f534f87d0cd" target="_blank" rel="noopener"><span class="row-title">The Age of Outrage: How Reaction Culture is Damaging Discourse</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/@t2.world/tech-companies-cant-ignore-online-harassment-of-women-any-longer-7593d3f439f2" target="_blank" rel="noopener"><span class="row-title">Tech Companies Can't Ignore Online Harassment of Women Any Longer</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/@t2.world/the-secret-to-being-more-creative-is-to-not-be-original-bf92a12696f4" target="_blank" rel="noopener"><span class="row-title">The secret to being more creative, is to not be original</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/@t2.world/understanding-the-role-of-imagined-communities-in-online-spaces-3f736f576ad9" target="_blank" rel="noopener"><span class="row-title">Understanding the Role of Imagined Communities in Online Spaces</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/@t2.world/reclaiming-focus-the-necessity-of-deep-reading-d47fd2c741ea" target="_blank" rel="noopener"><span class="row-title">Reclaiming Focus: The Necessity of Deep Reading</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/@t2.world/can-technology-reclaim-our-diminishing-reading-time-75b183fd2079" target="_blank" rel="noopener"><span class="row-title">Can technology reclaim our diminishing reading time?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/blockchain-biz/recommendation-media-is-here-but-is-it-what-we-need-a5564609e03c" target="_blank" rel="noopener"><span class="row-title">What's next after social media's failure to its users?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-    <li data-type="blogs" data-client="t2 World"><a href="https://medium.com/@t2.world/whats-next-in-media-after-the-clickbait-era-e841d89fea73" target="_blank" rel="noopener"><span class="row-title">What's next in media after the clickbait era?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-
-    <li class="type-divider" data-type="press-releases">Press Releases</li>
-    <li data-type="press-releases" data-client="Xiaomi"><a href="https://www.mi.com/global/discover/article?id=3768" target="_blank" rel="noopener"><span class="row-title">Xiaomi SU7 Ultra Unveiled: The Ultimate Performance Technology Sedan</span><span class="row-meta"><span class="row-client">Xiaomi</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
-    <li data-type="press-releases" data-client="Xiaomi"><a href="https://www.mi.com/global/discover/article?id=5467" target="_blank" rel="noopener"><span class="row-title">Xiaomi Unveils Next-Gen AIoT Lineup Spanning Smart Home, Wearables, and Entertainment</span><span class="row-meta"><span class="row-client">Xiaomi</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
-    <li data-type="press-releases" data-client="Xiaomi"><a href="https://www.mi.com/global/discover/article?id=5463" target="_blank" rel="noopener"><span class="row-title">Xiaomi Unveils Xiaomi 15T Series Blending Outstanding Optics with Cutting-edge Technology and Flagship Design</span><span class="row-meta"><span class="row-client">Xiaomi</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
-    <li data-type="press-releases" data-client="Eleven International"><a href="https://drive.google.com/file/d/1dWmODepNAEi4nkb0b6vhMAMAzuvqrpxv/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">LOST MARY unveils strategic business plans as it enters Malaysia, pledging regulatory compliance</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
-    <li data-type="press-releases" data-client="Eleven International"><a href="https://drive.google.com/file/d/1QUD5thT-xIKEeTQugb57mCzRQ__xZAeT/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">Video-to-Music Composition Tool 'TemPolor' Launches to Challenge Sora AI and Suno</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Press Release</span></span></a></li>
-
-    <li class="type-divider" data-type="case-studies">Case Studies</li>
-    <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/unipass" target="_blank" rel="noopener"><span class="row-title">UniPass: A self-custodial Web3 wallet app developed by Account Labs</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
-    <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/betteralt" target="_blank" rel="noopener"><span class="row-title">BetterAlt: A Mumbai-based wellness company combining traditional Ayurvedic wisdom with modern science</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
-    <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/lightspeed-studios" target="_blank" rel="noopener"><span class="row-title">LightSpeed Studios: One of the world's leading global game developers</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
-    <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/vidu" target="_blank" rel="noopener"><span class="row-title">Vidu: Leading generative AI video platform known for its pioneering Multi-Entity Consistency feature</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
-    <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/brilliant-labs" target="_blank" rel="noopener"><span class="row-title">Brilliant Labs: Wearable tech company redefining how humans interact with technology through AI-powered glasses</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
-    <li data-type="case-studies" data-client="Eleven International"><a href="https://www.11.international/study-case/red-door-digital" target="_blank" rel="noopener"><span class="row-title">Red Door Digital: Gaming studio creating AAA-quality Web3 video games</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Case Study</span></span></a></li>
-
-    <li class="type-divider" data-type="product-copy">Product Copy &amp; Articles</li>
-    <li data-type="product-copy" data-client="BetterAlt"><a href="https://www.womansworld.com/contributors/cut-through-the-wellness-clutter-with-this-ancient-remedy-for-ultimate-health" target="_blank" rel="noopener"><span class="row-title">Cut Through the Wellness Clutter With This Ancient Remedy for Ultimate Health</span><span class="row-meta"><span class="row-client">BetterAlt</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
-    <li data-type="product-copy" data-client="BetterAlt"><a href="https://radaronline.com/p/the-future-of-anti-aging-means-going-back-to-an-ancient-remedy/" target="_blank" rel="noopener"><span class="row-title">The Future of Anti-aging Means Going Back to an Ancient Remedy</span><span class="row-meta"><span class="row-client">BetterAlt</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
-    <li data-type="product-copy" data-client="Yeedi"><a href="https://okmagazine.com/p/robot-vacuum-must-have-addition-modern-homes/" target="_blank" rel="noopener"><span class="row-title">A Smarter Way to Clean: Why a Robot Vacuum Is a Must-Have Addition to Modern Homes</span><span class="row-meta"><span class="row-client">Yeedi</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
-    <li data-type="product-copy" data-client="Bc Babycare"><a href="https://www.thebraggingmommy.com/why-the-right-baby-carrier-can-make-postpartum-life-easier/" target="_blank" rel="noopener"><span class="row-title">Why the Right Baby Carrier Can Make Postpartum Life Easier</span><span class="row-meta"><span class="row-client">Bc Babycare</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
-    <li data-type="product-copy" data-client="Bc Babycare"><a href="https://goodmenproject.com/parenting/how-public-babywearing-challenges-old-notions-of-manhood/" target="_blank" rel="noopener"><span class="row-title">How Public Babywearing Challenges Old Notions of Manhood</span><span class="row-meta"><span class="row-client">Bc Babycare</span><span class="row-sep">·</span><span class="row-type">Product Copy</span></span></a></li>
-
-    <li class="type-divider" data-type="landing-pages">Landing Pages &amp; UX Copy</li>
-    <li data-type="landing-pages" data-client="ViewQwest"><a href="https://drive.google.com/file/d/1MBX_U4okFMRi_OJWoRGz1L5UQBJd1FCq/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">ViewQwest Residential Broadband</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Landing Page</span></span></a></li>
-    <li data-type="landing-pages" data-client="Bondee"><a href="https://bondee.com/safety/safetyCenter" target="_blank" rel="noopener"><span class="row-title">Bondee Safety Hub</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Landing Page</span></span></a></li>
-
-    <li class="type-divider" data-type="reports">Infographics &amp; Reports</li>
-    <li data-type="reports" data-client="Singtel"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/solution-brief-from-telco-to-techco.pdf" target="_blank" rel="noopener"><span class="row-title">From telco to techco: Enabling the future of digital transformation<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
-    <li data-type="reports" data-client="Singtel"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/streamline-hybrid-hr-process-with-ease.pdf" target="_blank" rel="noopener"><span class="row-title">From Onboarding to Team Engagement: Streamline Hybrid HR Processes With Ease<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
-    <li data-type="reports" data-client="Singtel"><a href="https://cdn2.singteldigital.com/content/dam/singtel/business/sb/articles/strategies-to-upskills-diverse-workforce.pdf" target="_blank" rel="noopener"><span class="row-title">Tech-driven inclusivity: strategies to upskill a diverse workforce<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
-    <li data-type="reports" data-client="Singtel"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/infographic-next-gen-security-for-the-remote-workforce.pdf" target="_blank" rel="noopener"><span class="row-title">Next-gen security for the remote workplace<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
-
-    <li class="type-divider" data-type="edms">Email Marketing</li>
-    <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-welcome-summer-stock.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-welcome-summer-stock.png" alt="TradeSquare welcome EDM" loading="lazy"><span class="row-title">Welcome to the Best Place to Buy Your Summer Stock</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
-    <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-sizzling-summer-steals.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-sizzling-summer-steals.png" alt="TradeSquare Sizzling Summer Steals EDM" loading="lazy"><span class="row-title">Sizzling Summer Steals: Buy Australian Wholesale</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
-    <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-november-update.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-november-update.png" alt="TradeSquare November Update EDM" loading="lazy"><span class="row-title">November TradeSquare Update</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
-    <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-koala-launch.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-koala-launch.png" alt="Koala is now on TradeSquare launch EDM" loading="lazy"><span class="row-title">Koala is Now on TradeSquare: Launch Campaign</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
-    <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-platform-guide.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-platform-guide.png" alt="Discover Australian Wholesale platform guide EDM" loading="lazy"><span class="row-title">Discover Australian Wholesale: Platform Guide</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
-    <li data-type="edms" data-client="TradeSquare"><a href="assets/edms/tradesquare-advent-calendar.png" target="_blank" rel="noopener"><img class="row-thumb" src="assets/edms/tradesquare-advent-calendar.png" alt="TradeSquare Advent Calendar EDM" loading="lazy"><span class="row-title">'Tis the Season: TradeSquare Advent Calendar</span><span class="row-meta"><span class="row-client">TradeSquare</span><span class="row-sep">·</span><span class="row-type">Email</span></span></a></li>
-
-    <li class="type-divider" data-type="product-guides">Product Guides</li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/connected-kitchen.pdf" target="_blank" rel="noopener"><span class="row-title">Connected Kitchen<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/get-to-know-your-oven.pdf" target="_blank" rel="noopener"><span class="row-title">Get to Know Your Oven<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/get-to-know-your-hob-and-hood.pdf" target="_blank" rel="noopener"><span class="row-title">Get to Know Your Hob &amp; Hood<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/get-to-know-your-fridge-and-freezer.pdf" target="_blank" rel="noopener"><span class="row-title">Get to Know Your Fridge &amp; Freezer<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/coffee-expertise.pdf" target="_blank" rel="noopener"><span class="row-title">Coffee Expertise<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/discover-meat-free-meals.pdf" target="_blank" rel="noopener"><span class="row-title">Discover Meat Free Meals<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/how-to-prepare-brunch.pdf" target="_blank" rel="noopener"><span class="row-title">How to Prepare Brunch<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/how-to-prepare-fish.pdf" target="_blank" rel="noopener"><span class="row-title">How to Prepare Fish<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/how-to-prepare-healthy-dishes.pdf" target="_blank" rel="noopener"><span class="row-title">How to Prepare Healthy Dishes<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/making-healthy-food-choices.pdf" target="_blank" rel="noopener"><span class="row-title">Making Healthy Food Choices<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/how-to-store-food-properly.pdf" target="_blank" rel="noopener"><span class="row-title">How to Store Food Properly<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/how-to-reduce-food-waste-at-home.pdf" target="_blank" rel="noopener"><span class="row-title">How to Reduce Food Waste at Home<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/how-to-shop-sustainably.pdf" target="_blank" rel="noopener"><span class="row-title">How to Shop Sustainably<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-    <li data-type="product-guides" data-client="Siemens"><a href="assets/product-guides/siemens/tips-hosting-dinner-party.pdf" target="_blank" rel="noopener"><span class="row-title">Tips for Hosting a Dinner Party<span class="badge">PDF</span></span><span class="row-meta"><span class="row-client">Siemens</span><span class="row-sep">·</span><span class="row-type">Guide</span></span></a></li>
-
-  </ul>
-
-  <p id="empty-state" hidden>No pieces match these filters.</p>
+  </section>
 
 </main>
 
-<footer>
-  <span class="name">Peter Imbong</span> · <a href="mailto:peter@peterimbong.com"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M3 5.5l7 6 7-6"/></svg>peter@peterimbong.com</a> · <a href="https://linkedin.com/in/peterimbong" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6.5" cy="6.7" r="1.1"/><path d="M5.6 8.9h1.8v6.2H5.6z"/><path d="M9.3 8.9h1.75v.95h.03c.24-.46.85-.95 1.75-.95 1.87 0 2.22 1.23 2.22 2.83v3.4h-1.8v-3.02c0-.72-.02-1.65-1-1.65-1 0-1.15.78-1.15 1.6v3.07h-1.8z"/></svg>LinkedIn</a>
+<footer id="contact">
+  <div class="wrap">
+    <span class="name">Peter Imbong</span>
+    <span><a href="mailto:peter@peterimbong.com">peter@peterimbong.com</a> · <a href="https://linkedin.com/in/peterimbong" target="_blank" rel="noopener">LinkedIn</a></span>
+  </div>
 </footer>
 
 <script>
 (function () {
-  var archiveList = document.getElementById('archive-list');
-  var rows = Array.prototype.slice.call(document.querySelectorAll('#archive-list li:not(.type-divider)'));
-  var dividers = Array.prototype.slice.call(document.querySelectorAll('#archive-list li.type-divider'));
-  var typeChips = Array.prototype.slice.call(document.querySelectorAll('#type-chips .chip'));
-  var clientCards = Array.prototype.slice.call(document.querySelectorAll('.client-card'));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#archive-list .row'));
+  var dividers = Array.prototype.slice.call(document.querySelectorAll('#archive-list .divider'));
+  var list = document.getElementById('archive-list');
   var countEl = document.getElementById('result-count');
   var emptyEl = document.getElementById('empty-state');
-  var clientBadge = document.getElementById('client-filter-badge');
-  var clientBadgeName = document.getElementById('client-filter-name');
-  var clientBadgeClear = document.getElementById('client-filter-clear');
-  var filtersSection = document.querySelector('.filters');
-  var activeType = 'all';
-  var activeClient = null;
 
-  function applyFilters() {
-    var visible = 0;
-    var visibleTypes = {};
-
-    rows.forEach(function (row) {
-      var rowType = row.getAttribute('data-type');
-      var rowClient = row.getAttribute('data-client');
-      var show = (activeType === 'all' || rowType === activeType) &&
-        (!activeClient || rowClient === activeClient);
-      row.hidden = !show;
-      if (show) {
-        visible++;
-        visibleTypes[rowType] = true;
-      }
-    });
-
-    archiveList.classList.toggle('type-filtered', activeType !== 'all');
-    dividers.forEach(function (divider) {
-      divider.hidden = activeType !== 'all' || !visibleTypes[divider.getAttribute('data-type')];
-    });
-
-    countEl.textContent = visible + ' of ' + rows.length + ' pieces';
-    emptyEl.hidden = visible !== 0;
-  }
-
-  function setActiveClient(client) {
-    activeClient = client;
-    clientCards.forEach(function (card) {
-      card.classList.toggle('active', card.getAttribute('data-client') === client);
-    });
-    if (client) {
-      clientBadgeName.textContent = client;
-      clientBadge.classList.add('visible');
-    } else {
-      clientBadge.classList.remove('visible');
-    }
-    applyFilters();
-  }
-
-  typeChips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      typeChips.forEach(function (c) {
-        c.classList.remove('active');
-        c.setAttribute('aria-pressed', 'false');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      var filter = tab.getAttribute('data-filter');
+      var visible = 0;
+      var visibleTypes = {};
+      rows.forEach(function (row) {
+        var show = filter === 'all' || row.getAttribute('data-type') === filter;
+        row.hidden = !show;
+        if (show) { visible++; visibleTypes[row.getAttribute('data-type')] = true; }
       });
-      chip.classList.add('active');
-      chip.setAttribute('aria-pressed', 'true');
-      activeType = chip.getAttribute('data-filter-type');
-      setActiveClient(null);
+      dividers.forEach(function (d) {
+        d.hidden = filter !== 'all' && !visibleTypes[d.getAttribute('data-type')];
+        if (filter !== 'all') d.hidden = true;
+      });
+      list.classList.toggle('filtered', filter !== 'all');
+      countEl.textContent = filter === 'all' ? (visible + ' pieces') : (visible + ' of ' + rows.length + ' pieces');
+      if (emptyEl) emptyEl.hidden = visible !== 0;
     });
   });
-
-  clientCards.forEach(function (card) {
-    var client = card.getAttribute('data-client');
-    var count = rows.filter(function (row) {
-      return row.getAttribute('data-client') === client;
-    }).length;
-    var countLabel = card.querySelector('.client-count');
-    if (countLabel) {
-      countLabel.textContent = count + (count === 1 ? ' piece' : ' pieces');
-    }
-
-    card.addEventListener('click', function () {
-      typeChips.forEach(function (c) {
-        c.classList.remove('active');
-        c.setAttribute('aria-pressed', 'false');
-      });
-      var allChip = document.querySelector('[data-filter-type="all"]');
-      if (allChip) {
-        allChip.classList.add('active');
-        allChip.setAttribute('aria-pressed', 'true');
-      }
-      activeType = 'all';
-      setActiveClient(activeClient === client ? null : client);
-      if (filtersSection) {
-        filtersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  if (clientBadgeClear) {
-    clientBadgeClear.addEventListener('click', function () {
-      setActiveClient(null);
-    });
-  }
-
-  applyFilters();
-})();
-
-(function () {
-  var nameBar = document.querySelector('.name-bar');
-  var headerEl = document.getElementById('top');
-  if (!nameBar || !headerEl) return;
-
-  var ticking = false;
-
-  function update() {
-    var headerBottom = headerEl.getBoundingClientRect().bottom;
-    nameBar.classList.toggle('visible', headerBottom < 0);
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', function () {
-    if (!ticking) {
-      requestAnimationFrame(update);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  update();
-})();
-
-(function () {
-  var bg = document.querySelector('.bg-parallax');
-  if (!bg) return;
-
-  var ticking = false;
-
-  function update() {
-    var offset = window.scrollY * -0.08;
-    bg.style.backgroundPosition = '0 ' + offset + 'px, 0 ' + offset + 'px';
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', function () {
-    if (!ticking) {
-      requestAnimationFrame(update);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  update();
 })();
 </script>
 
