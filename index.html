@@ -216,7 +216,17 @@
   }
 
   /* Archive */
-  .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+  .tabs-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+  .filter-word {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-right: 2px;
+  }
+  .tabs { display: flex; flex-wrap: wrap; gap: 10px; }
   .tab {
     font: inherit;
     font-family: var(--mono);
@@ -225,14 +235,15 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--ink-soft);
-    background: none;
-    border: 1.5px solid var(--ink-soft);
+    background: var(--paper-raised);
+    border: 1.5px solid var(--rule);
+    border-radius: 3px;
     padding: 8px 16px;
     cursor: pointer;
-    transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease, transform 0.12s ease;
+    transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
   }
-  .tab:hover { border-color: var(--wire); color: var(--wire); background: var(--paper-raised); }
-  .tab.active { background: var(--ink); border-color: var(--ink); color: var(--paper); transform: translateY(-1px); }
+  .tab:hover { border-color: var(--wire); color: var(--wire); box-shadow: 0 1px 0 var(--wire); }
+  .tab.active { background: var(--wire); border-color: var(--wire); color: var(--paper); }
 
   ul.archive { list-style: none; margin: 30px 0 0; padding: 0; }
   ul.archive li.divider {
@@ -345,6 +356,11 @@
       <span class="client-mark"><img src="assets/logos/betteralt.png" alt="BetterAlt"></span>
       <span class="client-mark tall"><img src="assets/logos/tradesquare.png" alt="TradeSquare"></span>
       <span class="client-mark"><img src="assets/logos/siemens.svg" alt="Siemens"></span>
+      <span class="client-mark"><img src="assets/logos/jollibee.svg" alt="Jollibee"></span>
+      <span class="client-mark"><img src="assets/logos/godaddy.svg" alt="GoDaddy"></span>
+      <span class="client-mark"><img src="assets/logos/little-caesars.png" alt="Little Caesars"></span>
+      <span class="client-mark"><img src="assets/logos/regus.png" alt="Regus UK"></span>
+      <span class="client-mark"><img src="assets/logos/hafele.png" alt="Häfele UK"></span>
     </div>
   </div>
 </div>
@@ -398,17 +414,20 @@
         <span class="note" id="result-count">110 pieces</span>
       </div>
 
-      <div class="tabs" id="tabs">
-        <button class="tab active" data-filter="all">All</button>
-        <button class="tab" data-filter="journalism">Journalism</button>
-        <button class="tab" data-filter="blogs">Blogs</button>
-        <button class="tab" data-filter="press-releases">Press</button>
-        <button class="tab" data-filter="case-studies">Case Studies</button>
-        <button class="tab" data-filter="product-copy">Product Copy</button>
-        <button class="tab" data-filter="landing-pages">Landing Pages</button>
-        <button class="tab" data-filter="reports">Reports</button>
-        <button class="tab" data-filter="edms">Email</button>
-        <button class="tab" data-filter="product-guides">Guides</button>
+      <div class="tabs-row">
+        <span class="filter-word">Filter</span>
+        <div class="tabs" id="tabs">
+          <button class="tab active" data-filter="all">All</button>
+          <button class="tab" data-filter="journalism">Journalism</button>
+          <button class="tab" data-filter="blogs">Blogs</button>
+          <button class="tab" data-filter="press-releases">Press</button>
+          <button class="tab" data-filter="case-studies">Case Studies</button>
+          <button class="tab" data-filter="product-copy">Product Copy</button>
+          <button class="tab" data-filter="landing-pages">Landing Pages</button>
+          <button class="tab" data-filter="reports">Reports</button>
+          <button class="tab" data-filter="edms">Email</button>
+          <button class="tab" data-filter="product-guides">Guides</button>
+        </div>
       </div>
 
       <ul class="archive" id="archive-list">
