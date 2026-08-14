@@ -216,22 +216,23 @@
   }
 
   /* Archive */
-  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
   .tab {
     font: inherit;
     font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--ink-soft);
     background: none;
-    border: 1px solid var(--rule);
-    padding: 7px 14px;
+    border: 1.5px solid var(--ink-soft);
+    padding: 8px 16px;
     cursor: pointer;
-    transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease, transform 0.12s ease;
   }
-  .tab:hover { border-color: var(--wire); color: var(--wire); }
-  .tab.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .tab:hover { border-color: var(--wire); color: var(--wire); background: var(--paper-raised); }
+  .tab.active { background: var(--ink); border-color: var(--ink); color: var(--paper); transform: translateY(-1px); }
 
   ul.archive { list-style: none; margin: 30px 0 0; padding: 0; }
   ul.archive li.divider {
@@ -443,11 +444,6 @@
         <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/securenet-report-october/" target="_blank" rel="noopener"><span class="row-title">SecureNet Cyber Threat Report | October 2021</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
         <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/how-to-build-a-smart-home-the-smart-way/" target="_blank" rel="noopener"><span class="row-title">How To Build A Smart Home The Smart Way</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
         <li class="row" data-type="blogs"><a href="https://viewqwest.com/sg/residential/blog/take-your-hybrid-work-from-home-to-the-next-level-for-peak-productivity/" target="_blank" rel="noopener"><span class="row-title">Take Your Hybrid Work-From-Home To The Next Level For Peak Productivity</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><span class="row-link"><span class="row-title">How Our Trust &amp; Safety Advisory Board is Navigating the Future on Bondee</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></span></li>
-        <li class="row" data-type="blogs"><span class="row-link"><span class="row-title">From Avatars to Advocates: How 2 Bondee Users Turned Their Online Connection into a Real-World Mission for Disability Inclusion</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></span></li>
-        <li class="row" data-type="blogs"><span class="row-link"><span class="row-title">Forging a Safer Future: Introducing the Bondee Trust and Safety Advisory Board</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></span></li>
-        <li class="row" data-type="blogs"><span class="row-link"><span class="row-title">Building Tomorrow's Future Innovators through the Bondee AI Summer Camp</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></span></li>
-        <li class="row" data-type="blogs"><span class="row-link"><span class="row-title">Blending Digital Innovation with Real-World Experiences: Creating Connections Through Offline Activities in Japan</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></span></li>
         <li class="row" data-type="blogs"><a href="https://www.11.international/post/advice-on-social-media-strategy" target="_blank" rel="noopener"><span class="row-title">Insights on Social Media Strategy</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
         <li class="row" data-type="blogs"><a href="https://www.11.international/post/welcome-to-our-new-look-eleven-international-your-trusted-advisor-for-cross-border-communications" target="_blank" rel="noopener"><span class="row-title">Welcome to Our New Look: Eleven International — Your Trusted Advisor for Cross-Border Communications</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
         <li class="row" data-type="blogs"><a href="https://www.11.international/post/truly-eleven-international-the-diversity-that-shapes-us" target="_blank" rel="noopener"><span class="row-title">Truly Eleven 'International'; The diversity that shapes us</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
@@ -508,7 +504,6 @@
 
         <li class="divider" data-type="landing-pages">Landing Pages &amp; UX Copy</li>
         <li class="row" data-type="landing-pages"><a href="https://drive.google.com/file/d/1MBX_U4okFMRi_OJWoRGz1L5UQBJd1FCq/view?usp=sharing" target="_blank" rel="noopener"><span class="row-title">ViewQwest Residential Broadband</span><span class="row-meta"><span class="row-client">ViewQwest</span><span class="row-sep">·</span><span class="row-type">Landing Page</span></span></a></li>
-        <li class="row" data-type="landing-pages"><span class="row-link"><span class="row-title">Bondee Safety Hub</span><span class="row-meta"><span class="row-client">Bondee</span><span class="row-sep">·</span><span class="row-type">Landing Page</span></span></span></li>
 
         <li class="divider" data-type="reports">Infographics &amp; Reports</li>
         <li class="row" data-type="reports"><a href="https://cdn1.singteldigital.com/content/dam/singtel/business/sb/articles/solution-brief-from-telco-to-techco.pdf" target="_blank" rel="noopener"><span class="row-title">From telco to techco: Enabling the future of digital transformation</span><span class="row-meta"><span class="row-client">Singtel</span><span class="row-sep">·</span><span class="row-type">Report</span></span></a></li>
