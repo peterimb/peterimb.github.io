@@ -169,16 +169,6 @@
   }
 
   /* Dispatch cards */
-  .lead-card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    border: 1px solid var(--rule);
-    padding: 34px;
-    margin-bottom: 18px;
-    transition: border-color 0.15s ease, background 0.15s ease;
-  }
-  .lead-card:hover { border-color: var(--wire); background: var(--paper-raised); }
   .eyebrow {
     display: inline-block;
     font-family: var(--mono);
@@ -186,20 +176,7 @@
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--wire);
-    margin-bottom: 14px;
-  }
-  .lead-card h3 {
-    font-size: 1.85rem;
-    font-weight: 400;
-    line-height: 1.22;
-    margin: 0 0 14px;
-    text-wrap: balance;
-  }
-  .lead-card p {
-    max-width: 66ch;
-    color: var(--ink-soft);
-    font-size: 1rem;
-    margin: 0 0 18px;
+    margin-bottom: 12px;
   }
   .read-link {
     font-family: var(--mono);
@@ -207,33 +184,41 @@
     letter-spacing: 0.02em;
     color: var(--ink);
   }
-  .lead-card:hover .read-link { color: var(--wire); }
   .read-link::after { content: " \2192"; }
 
-  .card-grid {
+  .news-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 24px 28px;
   }
-  .card {
+  .news-card {
     display: block;
     text-decoration: none;
     color: inherit;
     border: 1px solid var(--rule);
-    padding: 26px;
     transition: border-color 0.15s ease, background 0.15s ease;
   }
-  .card:hover { border-color: var(--wire); background: var(--paper-raised); }
-  .card h3 {
-    font-size: 1.28rem;
+  .news-card:hover { border-color: var(--wire); background: var(--paper-raised); }
+  .news-card:hover .read-link { color: var(--wire); }
+  .news-card .thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-raised);
+  }
+  .news-card .body { padding: 24px; }
+  .news-card h3 {
+    font-size: 1.32rem;
     font-weight: 400;
     line-height: 1.28;
     margin: 0 0 10px;
     text-wrap: balance;
   }
-  .card p { font-size: 0.92rem; color: var(--ink-soft); margin: 0 0 16px; }
+  .news-card p { font-size: 0.92rem; color: var(--ink-soft); margin: 0 0 16px; }
   @media (max-width: 720px) {
-    .card-grid { grid-template-columns: 1fr; }
+    .news-grid { grid-template-columns: 1fr; }
   }
 
   /* Archive */
@@ -374,40 +359,45 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Featured Works</h2>
-        <span class="note">5 of 82 pieces, in full</span>
+        <span class="note">4 of 82 pieces, in full</span>
       </div>
 
-      <a class="lead-card" href="https://www.wired.com/story/dengue-vaccine-philippines-outbreak/" target="_blank" rel="noopener">
-        <span class="eyebrow">WIRED UK · Journalism</span>
-        <h3>What happens when vaccine scepticism takes over? Look to the Philippines</h3>
-        <p>A feature on the Philippines' Dengvaxia scandal and how it fractured public trust in vaccines nationwide, reported and written for WIRED's UK edition.</p>
-        <span class="read-link">Read the story</span>
-      </a>
-
-      <div class="card-grid">
-        <a class="card" href="assets/product-guides/siemens/connected-kitchen.pdf" target="_blank" rel="noopener">
-          <span class="eyebrow">Siemens · Product Guides</span>
-          <h3>A 14-guide instructional series for a global engineering brand</h3>
-          <p>Consumer-facing product and cooking guides for Siemens home appliances, spanning connected kitchens, food storage, and sustainable cooking.</p>
-          <span class="read-link">Read the Connected Kitchen guide</span>
+      <div class="news-grid">
+        <a class="news-card" href="assets/product-guides/siemens/connected-kitchen.pdf" target="_blank" rel="noopener">
+          <img class="thumb" src="assets/featured/siemens.jpg" alt="A dark, connected Siemens kitchen with an integrated wine fridge and smart display">
+          <div class="body">
+            <span class="eyebrow">Siemens · Product Guides</span>
+            <h3>A 14-guide instructional series for a global engineering brand</h3>
+            <p>Consumer-facing product and cooking guides written for Siemens home appliance owners, spanning connected kitchens, food storage, and sustainable cooking.</p>
+            <span class="read-link">Read the Connected Kitchen guide</span>
+          </div>
         </a>
-        <a class="card" href="https://www.11.international/study-case/vidu" target="_blank" rel="noopener">
-          <span class="eyebrow">Eleven International · Case Studies</span>
-          <h3>Six client case studies for a cross-border tech PR agency</h3>
-          <p>Covering Web3 wallets, generative AI video, AR wearables, and wellness, written for Eleven International's roster of tech clients, including Vidu, UniPass, and Brilliant Labs.</p>
-          <span class="read-link">Read the Vidu case study</span>
+        <a class="news-card" href="https://www.11.international/study-case/vidu" target="_blank" rel="noopener">
+          <img class="thumb" src="assets/featured/eleven.jpg" alt="Close-up still from Vidu's AI-generated video demo">
+          <div class="body">
+            <span class="eyebrow">Eleven International · Case Studies</span>
+            <h3>Six client case studies for a cross-border tech PR agency</h3>
+            <p>Written for Eleven International, a PR agency, to profile its client Vidu — a generative AI video platform known for its Multi-Entity Consistency feature — for press and investor audiences.</p>
+            <span class="read-link">Read the Vidu case study</span>
+          </div>
         </a>
-        <a class="card" href="https://drive.google.com/file/d/1MBX_U4okFMRi_OJWoRGz1L5UQBJd1FCq/view?usp=sharing" target="_blank" rel="noopener">
-          <span class="eyebrow">ViewQwest · Landing Page + Blogs</span>
-          <h3>An ongoing content program for a broadband ISP</h3>
-          <p>Nine-plus educational and product blog posts, plus the core residential broadband landing page copy, for Singapore ISP ViewQwest.</p>
-          <span class="read-link">Read the landing page</span>
+        <a class="news-card" href="https://drive.google.com/file/d/1MBX_U4okFMRi_OJWoRGz1L5UQBJd1FCq/view?usp=sharing" target="_blank" rel="noopener">
+          <img class="thumb" src="assets/featured/viewqwest.jpg" alt="ViewQwest broadband campaign photo of a person streaming on a tablet">
+          <div class="body">
+            <span class="eyebrow">ViewQwest · Landing Page + Blogs</span>
+            <h3>An ongoing content program for a broadband ISP</h3>
+            <p>Landing page copy plus nine-plus educational blog posts written for ViewQwest, a Singapore broadband ISP, explaining home networking topics to residential customers.</p>
+            <span class="read-link">Read the landing page</span>
+          </div>
         </a>
-        <a class="card" href="https://www.mi.com/global/discover/article?id=3768" target="_blank" rel="noopener">
-          <span class="eyebrow">Xiaomi · Press Release</span>
-          <h3>Global launch copy for Xiaomi's SU7 Ultra sedan</h3>
-          <p>Press release copy for the unveiling of Xiaomi's flagship performance EV, published across Xiaomi's international newsroom.</p>
-          <span class="read-link">Read the release</span>
+        <a class="news-card" href="https://www.mi.com/global/discover/article?id=3768" target="_blank" rel="noopener">
+          <img class="thumb" src="assets/featured/xiaomi.jpg" alt="Official Xiaomi SU7 Ultra aerodynamics render">
+          <div class="body">
+            <span class="eyebrow">Xiaomi · Press Release</span>
+            <h3>Global launch copy for Xiaomi's SU7 Ultra sedan</h3>
+            <p>Press release copy for Xiaomi's international newsroom, announcing the launch of the SU7 Ultra, Xiaomi's flagship performance EV, to media and consumers worldwide.</p>
+            <span class="read-link">Read the release</span>
+          </div>
         </a>
       </div>
     </div>
