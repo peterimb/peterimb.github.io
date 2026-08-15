@@ -170,13 +170,18 @@
 
   /* Dispatch cards */
   .eyebrow {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    background: var(--wire);
+    color: var(--paper);
     font-family: var(--mono);
     font-size: 0.68rem;
-    letter-spacing: 0.07em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--wire);
-    margin-bottom: 12px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-bottom: 14px;
   }
   .news-grid {
     display: grid;
@@ -191,13 +196,28 @@
     transition: border-color 0.15s ease, background 0.15s ease;
   }
   .news-card:hover { border-color: var(--wire); background: var(--paper-raised); }
+  .news-card .thumb-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-raised);
+  }
   .news-card .thumb {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: 100%;
     object-fit: cover;
-    border-bottom: 1px solid var(--rule);
-    background: var(--paper-raised);
+  }
+  .news-card .thumb-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(28, 43, 58, 0.9) 1.4px, transparent 1.8px);
+    background-size: 14px 14px;
+    clip-path: polygon(100% 40%, 100% 100%, 40% 100%);
   }
   .news-card .body { padding: 14px 16px 16px; }
   .news-card .eyebrow { margin-bottom: 8px; }
@@ -375,28 +395,28 @@
 
       <div class="news-grid">
         <a class="news-card" href="assets/product-guides/siemens/connected-kitchen.pdf" target="_blank" rel="noopener">
-          <img class="thumb" src="assets/featured/siemens.jpg" alt="A woman using a Siemens built-in coffee machine in a modern kitchen">
+          <div class="thumb-wrap"><img class="thumb" src="assets/featured/siemens.jpg" alt="A woman using a Siemens built-in coffee machine in a modern kitchen"></div>
           <div class="body">
             <span class="eyebrow">Siemens · Product Page</span>
             <h3>Everything's easier and more efficient with a connected kitchen.</h3>
           </div>
         </a>
         <a class="news-card" href="https://www.11.international/study-case/vidu" target="_blank" rel="noopener">
-          <img class="thumb" src="assets/featured/eleven.jpg" alt="Vidu AI-generated video demo showing multiple consistent character shots from a voice prompt">
+          <div class="thumb-wrap"><img class="thumb" src="assets/featured/eleven.jpg" alt="Vidu AI-generated video demo showing multiple consistent character shots from a voice prompt"></div>
           <div class="body">
             <span class="eyebrow">Vidu · Case Study</span>
             <h3>A case study on Vidu AI video generator to boost awareness.</h3>
           </div>
         </a>
-        <a class="news-card" href="https://drive.google.com/file/d/1MBX_U4okFMRi_OJWoRGz1L5UQBJd1FCq/view?usp=sharing" target="_blank" rel="noopener">
-          <img class="thumb" src="assets/featured/viewqwest.jpg" alt="A woman browsing on a tablet next to her laptop at home">
+        <a class="news-card" href="https://viewqwest.com/sg/residential/blog/wifi-6-explained-speed-benefits-and-why-its-time-to-upgrade/" target="_blank" rel="noopener">
+          <div class="thumb-wrap"><img class="thumb" src="assets/featured/viewqwest.jpg" alt="A woman browsing on a tablet next to her laptop at home"></div>
           <div class="body">
-            <span class="eyebrow">ViewQwest · Landing Page</span>
-            <h3>Consumer broadband landing page</h3>
+            <span class="eyebrow">ViewQwest · Blog</span>
+            <h3>WiFi 6 Explained: Speed, Benefits, and Why It's Time to Upgrade</h3>
           </div>
         </a>
         <a class="news-card" href="https://www.mi.com/global/discover/article?id=3768" target="_blank" rel="noopener">
-          <img class="thumb" src="assets/featured/xiaomi.jpg" alt="Official Xiaomi SU7 Ultra aerodynamics render">
+          <div class="thumb-wrap"><img class="thumb" src="assets/featured/xiaomi.jpg" alt="Official Xiaomi SU7 Ultra aerodynamics render"></div>
           <div class="body">
             <span class="eyebrow">Xiaomi · Press Release</span>
             <h3>Xiaomi SU7 Ultra Unveiled: The Ultimate Performance Technology Sedan</h3>
@@ -419,6 +439,7 @@
           <button class="tab active" data-filter="all">All</button>
           <button class="tab" data-filter="journalism">Journalism</button>
           <button class="tab" data-filter="blogs">Blogs</button>
+          <button class="tab" data-filter="thought-leadership">Thought Leadership</button>
           <button class="tab" data-filter="press-releases">Press</button>
           <button class="tab" data-filter="case-studies">Case Studies</button>
           <button class="tab" data-filter="product-copy">Product Copy</button>
@@ -465,15 +486,15 @@
         <li class="row" data-type="blogs"><a href="https://www.11.international/post/advice-on-social-media-strategy" target="_blank" rel="noopener"><span class="row-title">Insights on Social Media Strategy</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
         <li class="row" data-type="blogs"><a href="https://www.11.international/post/welcome-to-our-new-look-eleven-international-your-trusted-advisor-for-cross-border-communications" target="_blank" rel="noopener"><span class="row-title">Welcome to Our New Look: Eleven International — Your Trusted Advisor for Cross-Border Communications</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
         <li class="row" data-type="blogs"><a href="https://www.11.international/post/truly-eleven-international-the-diversity-that-shapes-us" target="_blank" rel="noopener"><span class="row-title">Truly Eleven 'International'; The diversity that shapes us</span><span class="row-meta"><span class="row-client">Eleven International</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/how-the-attention-economy-of-web-2-0-failed-us-and-the-promise-web-3-0-holds-f0fda221b87a" target="_blank" rel="noopener"><span class="row-title">How the 'Attention Economy' of Web 2.0 failed us, and the promise Web 3.0 holds</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/the-age-of-outrage-how-reaction-culture-is-damaging-discourse-8f534f87d0cd" target="_blank" rel="noopener"><span class="row-title">The Age of Outrage: How Reaction Culture is Damaging Discourse</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/tech-companies-cant-ignore-online-harassment-of-women-any-longer-7593d3f439f2" target="_blank" rel="noopener"><span class="row-title">Tech Companies Can't Ignore Online Harassment of Women Any Longer</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/the-secret-to-being-more-creative-is-to-not-be-original-bf92a12696f4" target="_blank" rel="noopener"><span class="row-title">The secret to being more creative, is to not be original</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/understanding-the-role-of-imagined-communities-in-online-spaces-3f736f576ad9" target="_blank" rel="noopener"><span class="row-title">Understanding the Role of Imagined Communities in Online Spaces</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/reclaiming-focus-the-necessity-of-deep-reading-d47fd2c741ea" target="_blank" rel="noopener"><span class="row-title">Reclaiming Focus: The Necessity of Deep Reading</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/can-technology-reclaim-our-diminishing-reading-time-75b183fd2079" target="_blank" rel="noopener"><span class="row-title">Can technology reclaim our diminishing reading time?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><a href="https://medium.com/blockchain-biz/recommendation-media-is-here-but-is-it-what-we-need-a5564609e03c" target="_blank" rel="noopener"><span class="row-title">What's next after social media's failure to its users?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
-        <li class="row" data-type="blogs"><a href="https://medium.com/@t2.world/whats-next-in-media-after-the-clickbait-era-e841d89fea73" target="_blank" rel="noopener"><span class="row-title">What's next in media after the clickbait era?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
+        <li class="row" data-type="blogs thought-leadership"><a href="https://medium.com/@t2.world/how-the-attention-economy-of-web-2-0-failed-us-and-the-promise-web-3-0-holds-f0fda221b87a" target="_blank" rel="noopener"><span class="row-title">How the 'Attention Economy' of Web 2.0 failed us, and the promise Web 3.0 holds</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Thought Leadership</span></span></a></li>
+        <li class="row" data-type="blogs thought-leadership"><a href="https://medium.com/@t2.world/the-age-of-outrage-how-reaction-culture-is-damaging-discourse-8f534f87d0cd" target="_blank" rel="noopener"><span class="row-title">The Age of Outrage: How Reaction Culture is Damaging Discourse</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Thought Leadership</span></span></a></li>
+        <li class="row" data-type="blogs thought-leadership"><a href="https://medium.com/@t2.world/tech-companies-cant-ignore-online-harassment-of-women-any-longer-7593d3f439f2" target="_blank" rel="noopener"><span class="row-title">Tech Companies Can't Ignore Online Harassment of Women Any Longer</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Thought Leadership</span></span></a></li>
+        <li class="row" data-type="blogs thought-leadership"><a href="https://medium.com/@t2.world/the-secret-to-being-more-creative-is-to-not-be-original-bf92a12696f4" target="_blank" rel="noopener"><span class="row-title">The secret to being more creative, is to not be original</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Thought Leadership</span></span></a></li>
+        <li class="row" data-type="blogs thought-leadership"><a href="https://medium.com/@t2.world/understanding-the-role-of-imagined-communities-in-online-spaces-3f736f576ad9" target="_blank" rel="noopener"><span class="row-title">Understanding the Role of Imagined Communities in Online Spaces</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Thought Leadership</span></span></a></li>
+        <li class="row" data-type="blogs thought-leadership"><a href="https://medium.com/@t2.world/reclaiming-focus-the-necessity-of-deep-reading-d47fd2c741ea" target="_blank" rel="noopener"><span class="row-title">Reclaiming Focus: The Necessity of Deep Reading</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Thought Leadership</span></span></a></li>
+        <li class="row" data-type="blogs thought-leadership"><a href="https://medium.com/@t2.world/can-technology-reclaim-our-diminishing-reading-time-75b183fd2079" target="_blank" rel="noopener"><span class="row-title">Can technology reclaim our diminishing reading time?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Thought Leadership</span></span></a></li>
+        <li class="row" data-type="blogs thought-leadership"><a href="https://medium.com/blockchain-biz/recommendation-media-is-here-but-is-it-what-we-need-a5564609e03c" target="_blank" rel="noopener"><span class="row-title">What's next after social media's failure to its users?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Thought Leadership</span></span></a></li>
+        <li class="row" data-type="blogs thought-leadership"><a href="https://medium.com/@t2.world/whats-next-in-media-after-the-clickbait-era-e841d89fea73" target="_blank" rel="noopener"><span class="row-title">What's next in media after the clickbait era?</span><span class="row-meta"><span class="row-client">t2 World</span><span class="row-sep">·</span><span class="row-type">Thought Leadership</span></span></a></li>
         <li class="row" data-type="blogs"><a href="https://www.rappler.com/life-and-style/31422-family-finance-stock-market-kids" target="_blank" rel="noopener"><span class="row-title">Family finance: Raising stock market kids</span><span class="row-meta"><span class="row-client">COL Financial</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
         <li class="row" data-type="blogs"><a href="https://www.rappler.com/life-and-style/28826-mom-speaks-family-priorities-money" target="_blank" rel="noopener"><span class="row-title">A mom speaks: Family, priorities, and money</span><span class="row-meta"><span class="row-client">COL Financial</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
         <li class="row" data-type="blogs"><a href="https://www.rappler.com/life-and-style/31638-new-wave-volunteerism" target="_blank" rel="noopener"><span class="row-title">The new wave of volunteerism</span><span class="row-meta"><span class="row-client">Jollibee</span><span class="row-sep">·</span><span class="row-type">Blogs</span></span></a></li>
@@ -585,9 +606,10 @@
       var visible = 0;
       var visibleTypes = {};
       rows.forEach(function (row) {
-        var show = filter === 'all' || row.getAttribute('data-type') === filter;
+        var types = row.getAttribute('data-type').split(/\s+/);
+        var show = filter === 'all' || types.indexOf(filter) !== -1;
         row.hidden = !show;
-        if (show) { visible++; visibleTypes[row.getAttribute('data-type')] = true; }
+        if (show) { visible++; types.forEach(function (t) { visibleTypes[t] = true; }); }
       });
       dividers.forEach(function (d) {
         d.hidden = filter !== 'all' && !visibleTypes[d.getAttribute('data-type')];
