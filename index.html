@@ -330,7 +330,7 @@ button:focus-visible {
 /* ---------- work section ---------- */
 
 .work {
-  padding: clamp(3rem, 8vw, 5rem) 0 2rem;
+  padding: clamp(3rem, 8vw, 5rem) clamp(1.25rem, 4vw, 3rem) 2rem;
 }
 
 .section-head {
@@ -379,6 +379,11 @@ button:focus-visible {
 .entries-grid > .entry:first-child { border-top: none; }
 
 @media (min-width: 800px) {
+  .work {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .entry {
     border-top: none;
     border-left: 1px solid var(--rule);
@@ -475,7 +480,7 @@ button:focus-visible {
 /* ---------- archive ---------- */
 
 .archive {
-  padding: clamp(2rem, 6vw, 3rem) 0 clamp(3rem, 8vw, 5rem);
+  padding: clamp(2rem, 6vw, 3rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 8vw, 5rem);
   border-top: 1px solid var(--rule);
 }
 
@@ -604,6 +609,13 @@ footer {
   font-size: 0.65rem;
   color: var(--ink-faint);
   padding-top: 2rem;
+}
+
+@media (min-width: 800px) {
+  .archive {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .footer-bottom strong {
